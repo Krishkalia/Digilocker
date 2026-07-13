@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>DigiLocker Splash Screen</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style data-purpose="custom-fonts">
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+<script data-purpose="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#5e43f3', /* Close match to the screenshot's purple */
+              dark: '#4c36c6',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-brand text-white h-screen w-screen flex flex-col items-center justify-between overflow-hidden relative selection:bg-white/20">
+<!-- BEGIN: StatusBar Area -->
+<div class="w-full pt-4 pb-2 px-6 flex justify-between items-center text-[13px] font-medium z-10">
+<div class="flex items-center gap-1">
+<span>12:35 pm</span>
+<span class="text-[10px] opacity-80 leading-none">65.4<br/>KB/s</span>
+<svg class="w-3.5 h-3.5 ml-1" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<div class="w-1.5 h-1.5 rounded-full bg-white ml-1"></div>
+</div>
+<div class="flex items-center gap-1.5">
+<div class="flex items-center gap-0.5 opacity-80">
+<span class="text-[10px]">Vo 1</span>
+<span class="text-[10px]">5G</span>
+<svg class="w-3 h-3" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" fill-rule="evenodd"></path></svg>
+</div>
+<div class="flex items-center gap-0.5 opacity-80">
+<span class="text-[10px] bg-white text-brand rounded px-0.5">2</span>
+</div>
+<div class="flex items-end gap-0.5 h-3">
+<div class="w-0.5 h-1.5 bg-white"></div>
+<div class="w-0.5 h-2 bg-white"></div>
+<div class="w-0.5 h-2.5 bg-white"></div>
+<div class="w-0.5 h-3 bg-white"></div>
+</div>
+<div class="flex items-center ml-1 border border-white/50 rounded-sm px-1 py-0.5 relative">
+<span class="text-[10px] leading-none">35</span>
+<div class="absolute -right-0.5 top-1/2 -translate-y-1/2 w-0.5 h-1.5 bg-white/50 rounded-r-sm"></div>
+</div>
+</div>
+</div>
+<!-- END: StatusBar Area -->
+<!-- Floating action button artifact from screenshot -->
+<div class="absolute left-0 top-1/4 w-10 h-12 bg-black/20 rounded-r-xl flex items-center justify-center backdrop-blur-sm -ml-2">
+<svg class="w-5 h-5 text-white/70" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<!-- BEGIN: Main Content Area -->
+<main class="flex-1 flex flex-col items-center justify-center w-full px-8 mt-[-10vh]">
+<!-- Logo Icon Group -->
+<div class="relative mb-6">
+<!-- Document Backing -->
+<svg class="w-24 h-28 text-white" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 2C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22H18C19.1046 22 20 21.1046 20 20V8L14 2H6Z"></path>
+</svg>
+<!-- Fold Corner -->
+<svg class="w-8 h-8 text-brand absolute top-0 right-0" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M14 2V8H20"></path>
+</svg>
+<!-- Cloud with Keyhole -->
+<div class="absolute -bottom-2 -left-4">
+<svg class="w-24 h-16 text-brand" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<!-- Cloud shape -->
+<path d="M17.5 19C19.9853 19 22 16.9853 22 14.5C22 12.1678 20.228 10.2523 17.9571 10.035C17.4475 6.61869 14.4751 4 11 4C7.13401 4 4 7.13401 4 11C4 11.2334 4.01141 11.4641 4.03362 11.6913C2.2691 12.2745 1 13.9789 1 16C1 18.2091 2.79086 20 5 20H17.5Z" stroke="white" stroke-width="1.5"></path>
+<!-- Keyhole -->
+<path d="M11 11C11.5523 11 12 11.4477 12 12C12 12.383 11.7845 12.7161 11.4647 12.8929L12 15H10L10.5353 12.8929C10.2155 12.7161 10 12.383 10 12C10 11.4477 10.4477 11 11 11Z" fill="white"></path>
+</svg>
+</div>
+</div>
+<!-- Wordmark -->
+<h1 class="text-4xl font-semibold tracking-tight mb-8">DigiLocker</h1>
+<!-- Loading Bar -->
+<div class="w-full max-w-[240px] h-1.5 bg-white/30 rounded-full overflow-hidden relative">
+<div class="absolute top-0 left-0 h-full bg-white w-[70%] rounded-full"></div>
+</div>
+</main>
+<!-- END: Main Content Area -->
+<!-- BEGIN: Footer Area -->
+<footer class="pb-16 text-center w-full px-6">
+<p class="text-[17px] font-medium leading-relaxed opacity-95">
+      Document Wallet to<br/>Empower Citizens
+    </p>
+</footer>
+<!-- END: Footer Area -->
+<!-- Android style bottom navigation bar -->
+<div class="w-full h-12 bg-white/90 flex justify-around items-center px-8 z-10 fixed bottom-0">
+<div class="w-4 h-4 border-2 border-brand/50 rounded-sm"></div>
+<div class="w-4 h-4 border-2 border-brand/50 rounded-full"></div>
+<div class="w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-b-[12px] border-b-brand/50 -rotate-90"></div>
+</div>
+</body></html>

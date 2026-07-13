@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DigiLocker Menu Screen</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              indigo: '#3b2f91',
+              orange: '#f27824',
+              red: '#a9282b',
+              grayText: '#5f6368',
+              border: '#e0e0e0',
+              bg: '#f8f9fa'
+            }
+          },
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-styles">
+    body {
+      background-color: #ffffff;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .bottom-nav-shadow {
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800 font-sans flex flex-col h-screen overflow-hidden">
+<!-- BEGIN: Top Status Bar Space (Simulated) -->
+<div class="h-12 w-full bg-white shrink-0"></div>
+<!-- END: Top Status Bar Space (Simulated) -->
+<!-- BEGIN: Main Scrollable Content -->
+<main class="flex-1 overflow-y-auto hide-scrollbar pb-24 px-4 pt-2">
+<!-- User Profile Card -->
+<div class="border border-brand-border rounded-xl p-4 flex items-center justify-between mb-4 shadow-sm bg-white">
+<div class="flex items-center space-x-4">
+<img alt="User Avatar" class="w-14 h-14 rounded-full object-cover border border-gray-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWtTf7XLGG2kuqmr5UPTBN3dYZSvVGwMlwReplE7OwPXGKMGMr5lElIIzmpNYoDro4_OySSIDMSalcvmIebA2kTUj559N9lsGP4aieNiSp2AHzzTek6GijQzHnEIb3Ufm5dp-3KZiEmqLu81zA3bEvyBKI-E_W-cCkyPW8OhcdlGWKzrCYQ8b9qDR-EmvZhlynKJi7z6acgsUl_9TKqhj_fhgLF16mGg7cUoJgOP4nP2odTBtLaj11nGvb6f5980iB_a44DBYDABvV"/>
+<div>
+<h2 class="text-xl font-medium text-gray-800">Krish Kalia</h2>
+<div class="flex items-center text-gray-600 mt-0.5">
+<span class="text-sm">Verified</span>
+<i class="fas fa-check-circle text-green-500 ml-1 text-sm"></i>
+</div>
+</div>
+</div>
+<i class="fas fa-chevron-right text-gray-800 text-lg"></i>
+</div>
+<!-- First Menu Group -->
+<div class="border border-brand-border rounded-xl mb-4 bg-white shadow-sm overflow-hidden">
+<!-- Drive -->
+<div class="flex items-center px-4 py-4 border-b border-brand-border/60">
+<div class="w-8 flex justify-center">
+<i class="fa-regular fa-hard-drive text-brand-indigo text-lg"></i>
+</div>
+<span class="ml-4 text-gray-800 text-base">Drive</span>
+</div>
+<!-- My Account -->
+<div class="flex items-center px-4 py-4 border-b border-brand-border/60">
+<div class="w-8 flex justify-center">
+<i class="fa-regular fa-user text-brand-indigo text-lg"></i>
+</div>
+<span class="ml-4 text-gray-800 text-base">My Account</span>
+</div>
+<!-- Nominee -->
+<div class="flex items-center px-4 py-4 border-b border-brand-border/60">
+<div class="w-8 flex justify-center relative">
+<i class="fa-regular fa-user text-brand-indigo text-lg"></i>
+<i class="fa-solid fa-plus absolute -top-1 -right-1 text-[10px] text-brand-indigo"></i>
+</div>
+<span class="ml-4 text-gray-800 text-base">Nominee</span>
+</div>
+<!-- Settings -->
+<div class="flex items-center px-4 py-4">
+<div class="w-8 flex justify-center">
+<i class="fa-solid fa-gears text-brand-indigo text-lg"></i>
+</div>
+<span class="ml-4 text-gray-800 text-base">Settings</span>
+</div>
+</div>
+<!-- Second Menu Group -->
+<div class="border border-brand-border rounded-xl mb-4 bg-white shadow-sm overflow-hidden">
+<!-- Scan QR -->
+<div class="flex items-center px-4 py-4 border-b border-brand-border/60">
+<div class="w-8 flex justify-center">
+<i class="fa-solid fa-qrcode text-brand-indigo text-lg"></i>
+</div>
+<span class="ml-4 text-gray-800 text-base">Scan QR</span>
+</div>
+<!-- My Activity -->
+<div class="flex items-center px-4 py-4">
+<div class="w-8 flex justify-center">
+<i class="fa-solid fa-chart-line text-brand-indigo text-lg"></i>
+</div>
+<span class="ml-4 text-gray-800 text-base">My Activity</span>
+</div>
+</div>
+<!-- Third Menu Group -->
+<div class="border border-brand-border rounded-xl mb-4 bg-white shadow-sm overflow-hidden">
+<!-- Help -->
+<div class="flex items-center px-4 py-4 border-b border-brand-border/60">
+<div class="w-8 flex justify-center">
+<i class="fa-regular fa-circle-question text-brand-indigo text-lg"></i>
+</div>
+<span class="ml-4 text-gray-800 text-base">Help</span>
+</div>
+<!-- About -->
+<div class="flex items-center px-4 py-4">
+<div class="w-8 flex justify-center">
+<i class="fa-solid fa-circle-info text-brand-indigo text-lg"></i>
+</div>
+<span class="ml-4 text-gray-800 text-base">About</span>
+</div>
+</div>
+<!-- Fourth Menu Group (Logout) -->
+<div class="border border-brand-border rounded-xl mb-8 bg-white shadow-sm overflow-hidden">
+<!-- Switch Account -->
+<div class="flex items-center px-4 py-4 border-b border-brand-border/60">
+<div class="w-8 flex justify-center">
+<i class="fa-solid fa-arrow-right-arrow-left text-brand-indigo text-lg"></i>
+</div>
+<span class="ml-4 text-gray-800 text-base">Switch Account</span>
+</div>
+<!-- Logout -->
+<div class="flex items-center px-4 py-4">
+<div class="w-8 flex justify-center">
+<i class="fa-solid fa-arrow-right-from-bracket text-brand-red text-lg"></i>
+</div>
+<span class="ml-4 text-brand-red text-base">Logout</span>
+</div>
+</div>
+<!-- App Version -->
+<div class="text-center text-gray-600 text-sm mb-6 font-medium">
+      APP VERSION 9.4.0
+    </div>
+</main>
+<!-- END: Main Scrollable Content -->
+<!-- BEGIN: Bottom Navigation -->
+<nav class="bg-white bottom-nav-shadow fixed bottom-0 w-full h-16 flex items-center justify-around px-2 z-50 border-t border-gray-100">
+<a class="flex flex-col items-center justify-center w-16 text-gray-500" href="#">
+<div class="relative">
+<i class="fa-regular fa-file-lines text-2xl mb-1"></i>
+<i class="fa-solid fa-circle-exclamation absolute -top-1 -right-1 text-[10px] bg-white rounded-full"></i>
+</div>
+<span class="text-[10px] font-medium">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center w-16 text-gray-500" href="#">
+<i class="fa-solid fa-magnifying-glass text-2xl mb-1"></i>
+<span class="text-[10px] font-medium">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center w-16 text-gray-500" href="#">
+<div class="relative">
+<i class="fa-solid fa-certificate text-2xl mb-1"></i>
+<i class="fa-solid fa-check absolute top-1.5 left-1.5 text-xs text-white"></i>
+</div>
+<span class="text-[10px] font-medium">Issued</span>
+</a>
+<a class="flex flex-col items-center justify-center w-16 text-brand-indigo" href="#">
+<i class="fa-regular fa-user text-2xl mb-1"></i>
+<span class="text-[10px] font-medium font-bold">Menu</span>
+</a>
+<a class="flex items-center justify-center ml-2" href="#">
+<div class="bg-brand-orange text-white rounded-xl px-4 py-3 font-bold text-sm tracking-wide">
+        UMANG
+      </div>
+</a>
+</nav>
+<!-- END: Bottom Navigation -->
+</body></html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+<style data-purpose="custom-styles">
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f8f9fa;
+    }
+    .curved-header {
+      border-bottom-left-radius: 50% 20%;
+      border-bottom-right-radius: 50% 20%;
+    }
+  </style>
+</head>
+<body class="min-h-screen relative pb-20">
+<!-- BEGIN: HeaderSection -->
+<header class="bg-[#4F39F6] text-white pt-12 pb-24 px-6 curved-header relative z-0">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-4">
+<button class="text-xl">
+<i class="fa-solid fa-arrow-left"></i>
+</button>
+<h1 class="text-xl font-semibold">My Profile</h1>
+</div>
+<button class="text-xl">
+<i class="fa-solid fa-share-nodes"></i>
+</button>
+</div>
+</header>
+<!-- END: HeaderSection -->
+<!-- BEGIN: ProfileInfoSection -->
+<main class="px-5 -mt-20 relative z-10">
+<!-- Profile Avatar & Name -->
+<div class="flex flex-col items-center justify-center mb-6">
+<div class="w-36 h-36 rounded-full border-4 border-white overflow-hidden shadow-sm mb-4 bg-gray-200">
+<!-- Using standard placeholder as the provided image URL seems to be the full screenshot -->
+<img alt="Profile Picture" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMCqUFBx-FIH7VVo9kHwlQYQbJ4Gh46f6HHF2HK4BSMQ83NOnJ1Va2MaeoZF5vK50e-alldLkiBea-73kDKuZ5QN6IInarBDp2CNl0U0Ac9tds_vMZz8URSeBEkXXdhdrx8JqsioIrTs9rYYb7wazX_InqAfrhw9FceIVh_a5tNWdGk6djwk3_DKFlezrbirXeuCGjajNIVGMC4i2tJhXFu8tv-26zjeBIg6-7DFD5n8gsZW5_5Qxf60Yv3p19yQeFjfNIr01BLcx4"/>
+</div>
+<div class="flex items-center gap-2 mb-2">
+<h2 class="text-2xl font-bold text-gray-800">Krish Kalia</h2>
+<i class="fa-solid fa-circle-check text-[#22C55E] text-xl"></i>
+</div>
+<button class="bg-[#E0F2FE] text-[#0369A1] px-4 py-2 rounded-full font-medium flex items-center gap-2 text-sm">
+        Generate VCard
+        <i class="fa-solid fa-qrcode"></i>
+</button>
+</div>
+<!-- Data Card -->
+<div class="bg-white rounded-2xl shadow-sm overflow-hidden mb-6">
+<!-- DOB Row -->
+<div class="flex justify-between items-center p-5 border-b border-gray-100">
+<span class="text-gray-900 font-bold w-1/3">DOB</span>
+<span class="text-gray-600 w-2/3 text-right md:text-left">21-01-2006</span>
+</div>
+<!-- Gender Row -->
+<div class="flex justify-between items-center p-5 border-b border-gray-100">
+<span class="text-gray-900 font-bold w-1/3">Gender</span>
+<span class="text-gray-600 w-2/3 text-right md:text-left">Male</span>
+</div>
+<!-- Mobile Row -->
+<div class="flex justify-between items-center p-5 border-b border-gray-100">
+<span class="text-gray-900 font-bold w-1/3">Mobile</span>
+<div class="w-2/3 flex justify-between items-center">
+<span class="text-gray-600">8360754129</span>
+<button class="text-gray-400 hover:text-gray-600">
+<i class="fa-regular fa-pen-to-square"></i>
+</button>
+</div>
+</div>
+<!-- Email Row -->
+<div class="flex justify-between items-center p-5">
+<span class="text-gray-900 font-bold w-1/3">Email</span>
+<div class="w-2/3 flex justify-between items-center">
+<span class="text-gray-600 break-all pr-2">krishkaliajal10@gmail.com</span>
+<div class="flex items-center gap-3">
+<i class="fa-solid fa-triangle-exclamation text-yellow-500"></i>
+<button class="text-gray-400 hover:text-gray-600">
+<i class="fa-regular fa-pen-to-square"></i>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Links Section -->
+<div>
+<h3 class="text-lg font-bold text-gray-900 mb-4 px-1">Quick Links</h3>
+<!-- Placeholder for quick links content -->
+</div>
+</main>
+<!-- END: ProfileInfoSection -->
+</body></html>

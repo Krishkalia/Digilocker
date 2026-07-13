@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DigiLocker Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style data-purpose="custom-utilities">
+    /* Custom curved background for the header */
+    .bg-curve {
+      background: linear-gradient(to bottom, #4a2bcf 0%, #4a2bcf 85%, transparent 85%);
+      position: relative;
+    }
+    .bg-curve::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 30px; /* Adjust height of the curve */
+      background-color: #f3f4f6; /* Match main bg color, here using tailwind gray-100 */
+      border-top-left-radius: 50%;
+      border-top-right-radius: 50%;
+      z-index: 0;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Floating card positioning */
+    .floating-card-container {
+      margin-top: -60px; /* Pull the card up over the curve */
+      position: relative;
+      z-index: 20;
+    }
+
+    /* Prevent body scroll when not needed */
+    body {
+      background-color: #f3f4f6; /* gray-100 */
+      font-family: sans-serif;
+      overflow-x: hidden;
+    }
+    
+    /* Font sizes based on image */
+    .text-xxs {
+      font-size: 0.65rem;
+      line-height: 1rem;
+    }
+  </style>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col antialiased pb-20">
+<!-- BEGIN: Main Header Section -->
+<header class="bg-[#4a2bcf] pt-12 pb-24 px-4 relative rounded-b-[40px] shadow-sm">
+<!-- Top Bar: Logos and Icons -->
+<div class="flex items-center justify-between mb-8">
+<div class="flex items-center gap-2">
+<!-- Assuming Ashoka emblem placeholder -->
+<img alt="Ashoka Emblem" class="h-8" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAL4HsBh00xUSRcqC0RkHFpSKB7mzdVUIsOeng6c7tCl-XQ8A_BspksIVRw6Sd3LAXlQgC6BSAI3zuD3j9TVU8AfI3cYR3Ocaxv5jfUleAmMaPUNihxENjw_KdDlV5HusdqNVhu4l3Cdsm3Wb1lvTcxcvURRU9oVxiYKqsFU57BR3ROv8I2xDb0fX-67zOMSakiOxQBTsxoINoicn8VM-_c-x3P7gCOr98K3SpM48Kc6KIcf0NhmGBTQpgGR94DB0tQNq5FFqPZlBrz"/>
+<!-- DigiLocker Logo Text/Icon -->
+<div class="flex items-center gap-1 text-white text-xl font-bold tracking-wide">
+<i class="fa-solid fa-cloud"></i>
+<span>DigiLocker</span>
+</div>
+</div>
+<!-- User Avatar -->
+<div class="h-10 w-10 rounded-full border-2 border-white overflow-hidden bg-gray-300">
+<img alt="User Avatar" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZl2UCyUrgfkHyjEmAsTb664W_sBnMy6dD_ivbmPCLFI_yKJGT3EMeioF1zSDPJdwLhsGKPX5WfvXFn42utlbpTb8BtDy5NPi8yF7LiqpS2e9byFOTTtaE7fGNoOZZ55Ac4pU8mC9pNabHJzVpoZS93beTcVJtPr8wyScUA1QFVs_l-fGktX4A3V3is0onVV3agRa-Umrjo-1y08fATGSD1ty7Wjwr3Wl79DOXZhKdmoyFlEoN4Tx203x7hdaZtXtDfPjxnObmEyJf"/>
+</div>
+</div>
+<!-- Welcome Message -->
+<div class="mb-6 text-white">
+<h1 class="text-xl font-semibold mb-2">Welcome, Krish Kalia!</h1>
+<p class="text-sm opacity-90 leading-snug pr-8">
+        DigiLocker 'Issued Documents' are at par with original documents as per IT ACT,
+      </p>
+</div>
+<!-- Issued Documents Header -->
+<div class="flex justify-between items-center mb-2 text-white">
+<h2 class="text-lg font-semibold">Issued Documents</h2>
+<button class="bg-indigo-200/30 hover:bg-indigo-200/50 text-indigo-100 text-xs font-medium py-1 px-3 rounded-full transition-colors">
+        See All
+      </button>
+</div>
+</header>
+<!-- END: Main Header Section -->
+<!-- BEGIN: Main Content Area -->
+<main class="flex-grow px-4">
+<!-- BEGIN: Floating Aadhaar Card -->
+<!-- Positioned to overlap the header curve -->
+<section class="floating-card-container mb-6" data-purpose="issued-documents-list">
+<div class="bg-white rounded-2xl shadow-md p-4 relative overflow-hidden flex items-start gap-4">
+<!-- Faint Background Logo (Aadhaar) -->
+<div class="absolute right-[-20px] bottom-[-20px] opacity-5 pointer-events-none">
+<img alt="bg logo" class="w-32 h-32 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfKw5FmaglRxoOMNc_BAO8OKbw4jkDaANA7DqLYwxjMKeaS9mMRudZtrvNhLw1oysrPknCLoY0qgBS2Mlz3vbIs2bQZkr4bTGQM7i_rjMCVnU7jVfbStnxegb_p04byG5NDu6IyiOIUIXJjIS8oiFWYsZrPLPaOTwlSLfGEOgfcGLk8OfBRgCPORViS0J2-B2Oy-NeveOUCyVnuXNuUW9mZSkNZ__RspRiROLmMK5AJAt58jXFTDKWYKWhtgmzTiscE91ndpDjWjVu"/>
+</div>
+<!-- Card Content -->
+<div class="flex-shrink-0 bg-white p-1 rounded">
+<img alt="Aadhaar Logo" class="h-10 w-10 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxbJv-DsOFG-BRJgzdkiV00fbNdVCG5YlMBVm6CVGyW0yz_2kOMwsfGRQkh5p4nBR6rEhhFX6YbuS8j_UGiPIj-z8mzmJa_fqPRxSRSoWnXPz_6SzgP0H-krGimYECyCC8UFfMAS0C8YTqSGWvR8uPIhznvhdY5F0ebC8loOC4btgjg0CrgipaZeg1CQ5y2TssJjRKh_ksUBJkIuU2q5WCU2-wbgVh1ypCQWk4UqhafSsx6Gvo30dfLHRc2qRPcKfR3c0X0H1zYDHn"/>
+</div>
+<div class="flex-grow z-10">
+<h3 class="font-semibold text-gray-800 text-base">Aadhaar Card</h3>
+<p class="text-gray-500 font-mono text-sm mb-2">XXXX-XXXX-XXXX</p>
+<p class="text-xs text-gray-500 leading-tight">
+            Unique Identification Authority of India (UIDAI)
+          </p>
+</div>
+</div>
+</section>
+<!-- END: Floating Aadhaar Card -->
+<!-- BEGIN: UMANG Promo Banner -->
+<section class="mb-8" data-purpose="umang-promo">
+<div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 flex flex-row items-center justify-between relative overflow-hidden">
+<!-- Faint background pattern -->
+<div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(circle, #000 1px, transparent 1px); background-size: 10px 10px;"></div>
+<!-- Left Content -->
+<div class="w-3/5 z-10 pr-2">
+<h3 class="text-[#0e3b6e] font-semibold text-sm mb-1 leading-tight">Access UMANG in DigiLocker</h3>
+<p class="text-xs text-gray-600 mb-3 leading-snug">
+            Your one-stop destination for all Government services.
+          </p>
+<button class="bg-[#e96b1f] hover:bg-[#d55c10] text-white text-xs font-semibold py-1.5 px-4 rounded-full transition-colors">
+            Access UMANG
+          </button>
+</div>
+<!-- Right Graphic -->
+<div class="w-2/5 z-10 flex justify-end items-end h-full">
+<!-- Placeholder for the graphic in the image -->
+<img alt="UMANG Graphic" class="w-full object-contain max-h-[90px]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDr4tu47-V2U2wqg54m1xyr8tcjlhhjjItb4sgIFC366UkWQoPGu4S1ImDgUACYNUMsxSs0VUp7P7itYr9BnGcgxu2My6GY2CwIhv_QghpxtpDI-Bf-53W4dSMAqXyAc7vNFYTF5DvK4unOyxzTfRwUei92YkYtL60YpwnA18fLljKH6BXhjEaVkh7rrZOpGbanWsF76bj59lam4C1rmnZFu0GkvJatQGsAxQCd9LJk_FYwX88K17KxVLdnR-eeoXQyOug9bO3PNqUT"/>
+</div>
+</div>
+</section>
+<!-- END: UMANG Promo Banner -->
+<!-- BEGIN: DigiLocker Utility Section (Partial based on image) -->
+<section data-purpose="digilocker-utility">
+<h2 class="text-lg font-bold text-gray-800 mb-4 px-1">DigiLocker Utility</h2>
+<div class="grid grid-cols-3 gap-3">
+<!-- Drive Box -->
+<div class="bg-white rounded-xl shadow-sm p-3 flex flex-col items-center justify-center border border-gray-100 h-24">
+<i class="fa-brands fa-google-drive text-[#4285F4] text-3xl mb-2"></i>
+<span class="text-xs text-gray-600 font-medium text-center">DigiLocker<br/>Drive</span>
+</div>
+<!-- Document Box -->
+<div class="bg-white rounded-xl shadow-sm p-3 flex flex-col items-center justify-center border border-gray-100 h-24">
+<i class="fa-solid fa-folder-open text-[#F4B400] text-3xl mb-2"></i>
+<span class="text-xs text-gray-600 font-medium text-center">My<br/>Documents</span>
+</div>
+<!-- Other Box -->
+<div class="bg-white rounded-xl shadow-sm p-3 flex flex-col items-center justify-center border border-gray-100 h-24">
+<i class="fa-solid fa-file-shield text-[#0F9D58] text-3xl mb-2"></i>
+<span class="text-xs text-gray-600 font-medium text-center">Secure<br/>Files</span>
+</div>
+</div>
+</section>
+<!-- END: DigiLocker Utility Section -->
+</main>
+<!-- END: Main Content Area -->
+<!-- BEGIN: Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 flex justify-around items-center h-16 z-50 px-2" data-purpose="bottom-navigation">
+<!-- Home Tab (Active) -->
+<a class="flex flex-col items-center justify-center w-1/5 text-[#4a2bcf]" href="#">
+<i class="fa-solid fa-house text-xl mb-1"></i>
+<span class="text-xxs font-bold">Home</span>
+</a>
+<!-- Search Tab -->
+<a class="flex flex-col items-center justify-center w-1/5 text-gray-500 hover:text-gray-800 transition-colors" href="#">
+<i class="fa-solid fa-magnifying-glass text-xl mb-1"></i>
+<span class="text-xxs">Search</span>
+</a>
+<!-- Issued Tab -->
+<a class="flex flex-col items-center justify-center w-1/5 text-gray-500 hover:text-gray-800 transition-colors relative" href="#">
+<i class="fa-solid fa-award text-xl mb-1"></i>
+<span class="text-xxs">Issued</span>
+<!-- Optional notification dot -->
+<span class="absolute top-1 right-3 h-2 w-2 rounded-full bg-red-500 border border-white"></span>
+</a>
+<!-- Menu Tab -->
+<a class="flex flex-col items-center justify-center w-1/5 text-gray-500 hover:text-gray-800 transition-colors" href="#">
+<i class="fa-regular fa-user text-xl mb-1"></i>
+<span class="text-xxs">Menu</span>
+</a>
+<!-- UMANG Floating Tab Button -->
+<div class="w-1/5 flex justify-center relative">
+<!-- This button overlaps the nav bar visually -->
+<button class="absolute bottom-2 bg-[#e96b1f] hover:bg-[#d55c10] text-white font-bold py-3 px-2 rounded-xl shadow-lg w-16 flex flex-col items-center justify-center transition-transform hover:scale-105">
+<span class="text-[0.65rem] tracking-wider leading-none">UMANG</span>
+</button>
+</div>
+</nav>
+<!-- END: Bottom Navigation Bar -->
+</body></html>

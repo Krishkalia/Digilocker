@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DigiLocker Issued Documents</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style data-purpose="custom-utilities">
+    /* Custom utility classes */
+    .bg-digilocker-header {
+      background-color: #3b28cc;
+    }
+    .text-digilocker-purple {
+      color: #3b28cc;
+    }
+    .header-curve {
+      clip-path: ellipse(150% 100% at 50% 0%);
+    }
+  </style>
+</head>
+<body class="bg-white font-sans antialiased text-gray-800">
+<!-- BEGIN: Mobile App Container -->
+<div class="max-w-md mx-auto min-h-screen flex flex-col relative bg-gray-50 overflow-hidden shadow-xl" data-purpose="app-container">
+<!-- BEGIN: MainHeader -->
+<header class="bg-digilocker-header text-white pt-10 pb-20 px-6 relative z-10 header-curve" data-purpose="main-header">
+<!-- Top App Bar -->
+<div class="flex items-center justify-between mb-8" data-purpose="app-bar">
+<div class="flex items-center gap-3">
+<!-- Emblem Placeholder -->
+<div class="w-8 h-10 border border-white/30 rounded flex items-center justify-center">
+<svg class="w-5 h-5 text-white/70" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M10 2a1 1 0 00-1 1v1a1 1 0 002 0V3a1 1 0 00-1-1zM4 4h3a3 3 0 006 0h3a2 2 0 012 2v9a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zm2.5 7a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm2.45 4a2.5 2.5 0 10-4.9 0h4.9zM12 9a1 1 0 100 2h3a1 1 0 100-2h-3zm-1 4a1 1 0 011-1h2a1 1 0 110 2h-2a1 1 0 01-1-1z" fill-rule="evenodd"></path></svg>
+</div>
+<!-- DigiLocker Logo Text -->
+<div class="flex items-center gap-2">
+<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="text-2xl font-bold tracking-wide">DigiLocker</span>
+</div>
+</div>
+<button class="p-2">
+<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+<!-- Header Content -->
+<div data-purpose="header-content">
+<h1 class="text-3xl font-bold mb-3">Issued Documents</h1>
+<p class="text-white/80 text-sm leading-relaxed max-w-[85%]">
+          DigiLocker 'Issued Documents' are at par with original documents as per IT ACT, 2000
+        </p>
+</div>
+<!-- Decorative Document Icon -->
+<div class="absolute right-0 top-24 opacity-20 pointer-events-none">
+<svg class="w-32 h-32" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path></svg>
+</div>
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: Search Bar -->
+<div class="px-6 -mt-8 relative z-20" data-purpose="search-bar-container">
+<div class="bg-white rounded-full shadow-lg flex items-center px-4 py-3 border border-gray-100">
+<svg class="w-6 h-6 text-gray-400 mr-3" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<input class="flex-1 bg-transparent outline-none text-gray-600 placeholder-gray-400 border-none focus:ring-0" placeholder="Search for documents" type="text"/>
+</div>
+</div>
+<!-- END: Search Bar -->
+<!-- BEGIN: Document List Section -->
+<main class="flex-1 px-6 pt-8 pb-24 overflow-y-auto bg-white" data-purpose="document-list">
+<h2 class="text-lg font-bold text-gray-800 mb-4">My Issued Document(8)</h2>
+<div class="flex flex-col gap-0" data-purpose="list-items">
+<!-- List Item 1: APAAR ID -->
+<div class="flex items-center py-5 border-b border-gray-100">
+<div class="w-12 h-12 flex-shrink-0 bg-blue-50 rounded flex items-center justify-center mr-4">
+<svg class="w-8 h-8 text-blue-500" fill="currentColor" viewbox="0 0 20 20"><path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"></path></svg>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="text-base font-medium text-gray-900 truncate">APAAR ID</h3>
+<p class="text-sm text-gray-500 truncate">Academic Bank of Credits</p>
+</div>
+<button class="p-2 text-gray-400">
+<svg class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20"><path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"></path></svg>
+</button>
+</div>
+<!-- List Item 2: Aadhaar Card -->
+<div class="flex items-center py-5 border-b border-gray-100">
+<div class="w-12 h-12 flex-shrink-0 bg-red-50 rounded flex items-center justify-center mr-4">
+<svg class="w-8 h-8 text-red-500" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M10 2a1 1 0 00-1 1v1a1 1 0 002 0V3a1 1 0 00-1-1zM4 4h3a3 3 0 006 0h3a2 2 0 012 2v9a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zm2.5 7a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm2.45 4a2.5 2.5 0 10-4.9 0h4.9zM12 9a1 1 0 100 2h3a1 1 0 100-2h-3zm-1 4a1 1 0 011-1h2a1 1 0 110 2h-2a1 1 0 01-1-1z" fill-rule="evenodd"></path></svg>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="text-base font-medium text-gray-900 truncate">Aadhaar Card</h3>
+<p class="text-sm text-gray-500 line-clamp-2">Unique Identification Authority of India (UIDAI)</p>
+</div>
+<button class="p-2 text-gray-400">
+<svg class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20"><path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"></path></svg>
+</button>
+</div>
+<!-- List Item 3: Class X Marksheet -->
+<div class="flex items-center py-5 border-b border-gray-100">
+<div class="w-12 h-12 flex-shrink-0 bg-green-50 rounded-full flex items-center justify-center mr-4">
+<svg class="w-8 h-8 text-green-500" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" fill-rule="evenodd"></path></svg>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="text-base font-medium text-gray-900 truncate">Class X Marksheet</h3>
+<p class="text-sm text-gray-500 line-clamp-2">Central Board of Secondary Education</p>
+</div>
+<button class="p-2 text-gray-400">
+<svg class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20"><path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"></path></svg>
+</button>
+</div>
+<!-- List Item 4: Degree/Diploma Marksheet -->
+<div class="flex items-center py-5 border-b border-gray-100">
+<div class="w-12 h-12 flex-shrink-0 bg-yellow-50 rounded-full flex items-center justify-center mr-4">
+<svg class="w-8 h-8 text-yellow-500" fill="currentColor" viewbox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="text-base font-medium text-gray-900 truncate">Degree/ Diploma Marksheet</h3>
+<p class="text-sm text-gray-500 line-clamp-2">Delhi University</p>
+</div>
+<button class="p-2 text-gray-400">
+<svg class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20"><path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"></path></svg>
+</button>
+</div>
+</div>
+</main>
+<!-- END: Document List Section -->
+<!-- BEGIN: Bottom Navigation -->
+<nav class="bg-white border-t border-gray-200 fixed bottom-0 w-full max-w-md flex justify-around items-center py-2 px-2 z-30" data-purpose="bottom-nav">
+<!-- Home -->
+<a class="flex flex-col items-center p-2 text-gray-500 hover:text-gray-800" href="#">
+<svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="text-xs">Home</span>
+</a>
+<!-- Search -->
+<a class="flex flex-col items-center p-2 text-gray-500 hover:text-gray-800" href="#">
+<svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="text-xs">Search</span>
+</a>
+<!-- Issued (Active) -->
+<a class="flex flex-col items-center p-2 text-digilocker-purple font-medium" href="#">
+<svg class="w-6 h-6 mb-1" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" fill-rule="evenodd"></path></svg>
+<span class="text-xs">Issued</span>
+</a>
+<!-- Menu -->
+<a class="flex flex-col items-center p-2 text-gray-500 hover:text-gray-800" href="#">
+<svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="text-xs">Menu</span>
+</a>
+<!-- UMANG Badge -->
+<div class="absolute right-0 bottom-full mb-2 mr-2">
+<button class="bg-orange-500 text-white text-xs font-bold px-3 py-2 rounded-l-full rounded-r-full shadow-lg flex items-center">
+          UMANG
+        </button>
+</div>
+</nav>
+<!-- END: Bottom Navigation -->
+</div>
+<!-- END: Mobile App Container -->
+</body></html>
