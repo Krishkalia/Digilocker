@@ -18,6 +18,10 @@ const documentSchema = new mongoose.Schema({
     type: String,
     required: true // Cloudinary reference for generating signed URLs
   },
+  logoUrl: {
+    type: String,
+    default: null // Optional custom logo for the document card
+  },
   expiryDate: {
     type: Date,
     default: null

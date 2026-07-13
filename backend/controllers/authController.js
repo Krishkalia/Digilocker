@@ -1,6 +1,8 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { User } = require('../models/User');
+const cloudinary = require('../utils/cloudinary');
+const fs = require('fs');
 
 const JWT_SECRET = process.env.JWT_SECRET || 'your_super_secret_jwt_key_here';
 
@@ -77,7 +79,53 @@ const registerTempUser = async (req, res) => {
   }
 };
 
+// Update Profile Photo
+const updateProfilePhoto = async (req, res) => {
+  try {
+    const userId = req.user.id; // from authMiddleware
+    if (!req.file) {
+      return res.status(400).json({ message: 'No image file provided' });
+    }
+
+    // Upload to cloudinary
+    const result = await cloudinary.uploader.upload(req.file.path, {
+      folder: 'digilocker_profiles',
+    });
+
+    // Remove local file
+    fs.unlinkSync(req.file.path);
+
+    // Update user
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      { profilePhotoUrl: result.secure_url },
+      { new: true }
+    );
+
+    res.json({
+      message: 'Profile photo updated successfully',
+      profilePhotoUrl: updatedUser.profilePhotoUrl,
+      user: {
+        id: updatedUser._id,
+        username: updatedUser.username,
+        email: updatedUser.email,
+        phoneNumber: updatedUser.phoneNumber,
+        dob: updatedUser.dob,
+        gender: updatedUser.gender,
+        profilePhotoUrl: updatedUser.profilePhotoUrl
+      }
+    });
+  } catch (error) {
+    console.error('Error updating profile photo:', error);
+    if (req.file && fs.existsSync(req.file.path)) {
+      fs.unlinkSync(req.file.path);
+    }
+    res.status(500).json({ message: 'Server error updating profile photo' });
+  }
+};
+
 module.exports = {
   login,
-  registerTempUser
+  registerTempUser,
+  updateProfilePhoto
 };

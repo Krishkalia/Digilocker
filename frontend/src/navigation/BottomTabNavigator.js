@@ -55,9 +55,9 @@ function CustomTabBar({ state, descriptors, navigation }) {
                 solid={isFocused || route.name === 'Home'} // FontAwesome 5 solid state
               />
               {/* Notification dot for Issued */}
-              {route.name === 'Issued' && (
+              {route.name === 'Issued' ? (
                 <View className="absolute -top-1 -right-2 h-2.5 w-2.5 rounded-full bg-red-500 border border-white" />
-              )}
+              ) : null}
             </View>
             <Text 
               className={`text-[9px] mt-1 ${isFocused ? 'text-[#4a2bcf] font-bold' : 'text-gray-500'}`}

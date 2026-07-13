@@ -1,11 +1,69 @@
-import React, { useContext } from 'react';
-import { View, Text, SafeAreaView, TouchableOpacity, Image, ScrollView, Dimensions } from 'react-native';
+import React, { useContext, useState } from 'react';
+import { View, Text, SafeAreaView, TouchableOpacity, Image, ScrollView, Dimensions, ActivityIndicator, Alert } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { AuthContext } from '../context/AuthContext';
+import * as ImagePicker from 'expo-image-picker';
+import axios from 'axios';
 
 export default function ProfileScreen({ navigation }) {
-  const { user } = useContext(AuthContext);
+  const { user, updateUser } = useContext(AuthContext);
   const { width: screenWidth } = Dimensions.get('window');
+  const [uploading, setUploading] = useState(false);
+
+  const API_URL = 'http://192.168.1.5:5000/api'; 
+
+  const pickImage = async () => {
+    try {
+      // Ask for permission
+      const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
+      if (permissionResult.granted === false) {
+        Alert.alert("Permission required", "You need to grant permission to access your photos.");
+        return;
+      }
+
+      // Launch Image Picker
+      const result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        allowsEditing: true,
+        aspect: [1, 1],
+        quality: 0.5,
+      });
+
+      if (!result.canceled && result.assets && result.assets.length > 0) {
+        uploadImage(result.assets[0]);
+      }
+    } catch (error) {
+      console.log("Error picking image:", error);
+    }
+  };
+
+  const uploadImage = async (imageAsset) => {
+    setUploading(true);
+    try {
+      const formData = new FormData();
+      formData.append('profilePhoto', {
+        uri: imageAsset.uri,
+        type: 'image/jpeg',
+        name: 'profile.jpg',
+      });
+
+      const response = await axios.put(`${API_URL}/auth/profile-photo`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      if (response.data && response.data.user) {
+        await updateUser(response.data.user);
+        Alert.alert("Success", "Profile photo updated successfully!");
+      }
+    } catch (error) {
+      console.error('Upload error:', error.response?.data || error.message);
+      Alert.alert("Error", "Failed to update profile photo.");
+    } finally {
+      setUploading(false);
+    }
+  };
 
   return (
     <SafeAreaView className="flex-1 bg-white">
@@ -41,13 +99,28 @@ export default function ProfileScreen({ navigation }) {
 
         {/* Profile Avatar & Info Section */}
         <View className="items-center -mt-24 z-20 px-5">
-          {/* Avatar with White Border */}
-          <View className="w-32 h-32 rounded-full border-[5px] border-white overflow-hidden bg-gray-200 shadow-sm mb-3">
-            <Image 
-              source={{ uri: user?.profilePhotoUrl ? user.profilePhotoUrl : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png' }}
-              className="w-full h-full"
-              resizeMode="cover"
-            />
+          {/* Avatar with White Border & Edit Overlay */}
+          <View className="relative mb-3">
+            <TouchableOpacity 
+              activeOpacity={0.8} 
+              onPress={pickImage}
+              className="w-32 h-32 rounded-full border-[5px] border-white overflow-hidden bg-gray-200 shadow-sm"
+            >
+              <Image 
+                source={{ uri: user?.profilePhotoUrl ? user.profilePhotoUrl : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png' }}
+                className="w-full h-full"
+                resizeMode="cover"
+              />
+              {uploading ? (
+                <View className="absolute inset-0 bg-black/40 justify-center items-center">
+                  <ActivityIndicator size="large" color="#ffffff" />
+                </View>
+              ) : null}
+            </TouchableOpacity>
+            {/* Edit Icon Badge */}
+            <View className="absolute bottom-1 right-1 bg-[#3838D9] w-8 h-8 rounded-full border-2 border-white justify-center items-center shadow-sm pointer-events-none">
+              <FontAwesome5 name="camera" size={12} color="white" />
+            </View>
           </View>
           
           {/* Name & Badge */}

@@ -31,7 +31,7 @@ router.delete('/users/:id', adminController.deleteUser);
 
 // Document Management per User
 router.get('/users/:id/documents', adminController.getUserDocuments);
-router.post('/users/:id/documents', upload.single('documentFile'), adminController.uploadDocument);
+router.post('/users/:id/documents', upload.fields([{ name: 'documentFile', maxCount: 1 }, { name: 'logoFile', maxCount: 1 }]), adminController.uploadDocument);
 router.delete('/documents/:userDocId', adminController.deleteDocument);
 
 module.exports = router;

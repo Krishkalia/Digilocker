@@ -96,8 +96,19 @@ export default function Dashboard() {
                 {filteredUsers.map((user) => (
                   <tr key={user._id} className="hover:bg-gray-50">
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="font-medium text-gray-900">{user.username}</div>
-                      <div className="text-sm text-gray-500">{user._id}</div>
+                      <div className="flex items-center">
+                        {user.profilePhotoUrl ? (
+                          <img className="h-10 w-10 rounded-full mr-3 object-cover" src={user.profilePhotoUrl} alt="" />
+                        ) : (
+                          <div className="h-10 w-10 rounded-full bg-[#4B39EF] bg-opacity-10 text-[#4B39EF] flex items-center justify-center mr-3 font-bold text-lg">
+                            {user.username.charAt(0).toUpperCase()}
+                          </div>
+                        )}
+                        <div>
+                          <div className="font-medium text-gray-900">{user.username}</div>
+                          <div className="text-sm text-gray-500">{user._id}</div>
+                        </div>
+                      </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="text-sm text-gray-900">{user.email}</div>
@@ -112,7 +123,7 @@ export default function Dashboard() {
                       {new Date(user.createdAt).toLocaleDateString()}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-3">
-                      <Link to={`/users/${user._id}`} className="text-[#4B39EF] hover:text-indigo-900 inline-flex items-center" title="Manage Documents">
+                      <Link to={`/users/${user._id}`} state={{ username: user.username }} className="text-[#4B39EF] hover:text-indigo-900 inline-flex items-center" title="Manage Documents">
                         <FolderOpen size={18} />
                       </Link>
                       <button onClick={() => openEdit(user)} className="text-gray-600 hover:text-gray-900 inline-flex items-center" title="Edit User">

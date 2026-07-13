@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useLocation } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import api from '../api';
 import { ArrowLeft, Trash2, UploadCloud } from 'lucide-react';
@@ -7,6 +7,9 @@ import DocumentModal from '../components/DocumentModal';
 
 export default function UserDetails() {
   const { id } = useParams();
+  const location = useLocation();
+  const username = location.state?.username || 'User';
+  
   const [documents, setDocuments] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -44,7 +47,7 @@ export default function UserDetails() {
             <Link to="/" className="p-2 text-gray-500 hover:text-gray-900 bg-white rounded-full shadow-sm border border-gray-200">
               <ArrowLeft size={20} />
             </Link>
-            <h1 className="text-2xl font-bold text-gray-900">User Documents</h1>
+            <h1 className="text-2xl font-bold text-gray-900">{username}'s Documents</h1>
           </div>
 
           <div className="flex justify-end mb-6">
@@ -75,11 +78,18 @@ export default function UserDetails() {
                   return (
                   <tr key={userDoc._id} className="hover:bg-gray-50">
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="font-medium text-gray-900">{doc.documentName}</div>
-                      <div className="text-xs text-blue-600 truncate max-w-xs">
-                        <a href={`http://localhost:5000${doc.cloudStorageUrl}`} target="_blank" rel="noreferrer">
-                          View File
-                        </a>
+                      <div className="flex items-center">
+                        {doc.logoUrl && (
+                          <img src={doc.logoUrl} alt="logo" className="w-6 h-6 mr-3 object-contain" />
+                        )}
+                        <div>
+                          <div className="font-medium text-gray-900">{doc.documentName}</div>
+                          <div className="text-xs text-blue-600 truncate max-w-xs mt-1">
+                            <a href={doc.cloudStorageUrl} target="_blank" rel="noreferrer" className="hover:underline">
+                              View File
+                            </a>
+                          </div>
+                        </div>
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">

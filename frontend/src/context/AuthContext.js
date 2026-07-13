@@ -59,8 +59,18 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const updateUser = async (updatedData) => {
+    try {
+      const newUser = { ...user, ...updatedData };
+      setUser(newUser);
+      await SecureStore.setItemAsync('userData', JSON.stringify(newUser));
+    } catch (e) {
+      console.error('Failed to update user context', e);
+    }
+  };
+
   return (
-    <AuthContext.Provider value={{ user, loading, login, logout }}>
+    <AuthContext.Provider value={{ user, loading, login, logout, updateUser }}>
       {children}
     </AuthContext.Provider>
   );

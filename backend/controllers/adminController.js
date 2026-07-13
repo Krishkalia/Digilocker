@@ -129,7 +129,10 @@ exports.uploadDocument = async (req, res) => {
     const { documentName, documentTypeName, expiryDate } = req.body;
     const userId = req.params.id;
 
-    if (!req.file) return res.status(400).json({ message: 'File is required' });
+    if (!req.files || !req.files.documentFile) return res.status(400).json({ message: 'Document file is required' });
+
+    const documentFile = req.files.documentFile[0];
+    const logoFile = req.files.logoFile ? req.files.logoFile[0] : null;
 
     // Ensure document type exists
     let docType = await DocumentType.findOne({ typeName: documentTypeName.toUpperCase() });
@@ -138,18 +141,28 @@ exports.uploadDocument = async (req, res) => {
       await docType.save();
     }
 
-    // Upload to Cloudinary
-    const result = await cloudinary.uploader.upload(req.file.path, {
+    // Upload Document to Cloudinary
+    const docResult = await cloudinary.uploader.upload(documentFile.path, {
       folder: 'digilocker_secure_vault',
       resource_type: 'auto'
     });
+    fs.unlinkSync(documentFile.path);
 
-    // Delete local file after upload
-    fs.unlinkSync(req.file.path);
+    // Upload Logo to Cloudinary if provided
+    let logoUrl = null;
+    if (logoFile) {
+      const logoResult = await cloudinary.uploader.upload(logoFile.path, {
+        folder: 'digilocker_logos',
+        resource_type: 'auto'
+      });
+      logoUrl = logoResult.secure_url;
+      fs.unlinkSync(logoFile.path);
+    }
 
     const newDoc = new Document({
       documentName,
-      cloudStorageUrl: result.secure_url,
+      cloudStorageUrl: docResult.secure_url,
+      logoUrl: logoUrl,
       expiryDate: expiryDate || null,
       documentType: docType._id
     });
@@ -165,9 +178,14 @@ exports.uploadDocument = async (req, res) => {
     res.status(201).json({ message: 'Document uploaded to Cloudinary successfully', document: newDoc });
   } catch (error) {
     console.error(error);
-    // Cleanup local file if upload failed
-    if (req.file && fs.existsSync(req.file.path)) {
-      fs.unlinkSync(req.file.path);
+    // Cleanup local files if upload failed
+    if (req.files) {
+      if (req.files.documentFile && fs.existsSync(req.files.documentFile[0].path)) {
+        fs.unlinkSync(req.files.documentFile[0].path);
+      }
+      if (req.files.logoFile && fs.existsSync(req.files.logoFile[0].path)) {
+        fs.unlinkSync(req.files.logoFile[0].path);
+      }
     }
     res.status(500).json({ message: 'Server error during upload' });
   }

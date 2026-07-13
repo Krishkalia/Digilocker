@@ -118,16 +118,25 @@ export default function IssuedDocumentsScreen({ navigation }) {
               documents.map((userDoc) => {
                 const docName = userDoc?.document?.documentName ? userDoc.document.documentName : 'Aadhaar Card';
                 
-                let logoUrl = 'https://lh3.googleusercontent.com/aida-public/AB6AXuDxbJv-DsOFG-BRJgzdkiV00fbNdVCG5YlMBVm6CVGyW0yz_2kOMwsfGRQkh5p4nBR6rEhhFX6YbuS8j_UGiPIj-z8mzmJa_fqPRxSRSoWnXPz_6SzgP0H-krGimYECyCC8UFfMAS0C8YTqSGWvR8uPIhznvhdY5F0ebC8loOC4btgjg0CrgipaZeg1CQ5y2TssJjRKh_ksUBJkIuU2q5WCU2-wbgVh1ypCQWk4UqhafSsx6Gvo30dfLHRc2qRPcKfR3c0X0H1zYDHn'; 
+                // Use custom logo from DB if available, otherwise fallback
+                let logoUrl = userDoc?.document?.logoUrl || 'https://lh3.googleusercontent.com/aida-public/AB6AXuDxbJv-DsOFG-BRJgzdkiV00fbNdVCG5YlMBVm6CVGyW0yz_2kOMwsfGRQkh5p4nBR6rEhhFX6YbuS8j_UGiPIj-z8mzmJa_fqPRxSRSoWnXPz_6SzgP0H-krGimYECyCC8UFfMAS0C8YTqSGWvR8uPIhznvhdY5F0ebC8loOC4btgjg0CrgipaZeg1CQ5y2TssJjRKh_ksUBJkIuU2q5WCU2-wbgVh1ypCQWk4UqhafSsx6Gvo30dfLHRc2qRPcKfR3c0X0H1zYDHn'; 
                 let authorityStr = "Government of India";
 
-                if (docName.includes('APAAR')) {
-                  authorityStr = "Academic Bank of Credits";
-                  logoUrl = "https://lh3.googleusercontent.com/aida-public/AB6AXuDKJXZU0PqF8zM3B3oVqj1Q_gM4C6w2zK_7s1vT9jRzD5qX_x8Z7W_QY_t_m_N_N_N_N_N_N_N_N_N_N_N_N_N_N_N_N_N_N_N_N_N_N_N_N_N_N_N_N_N_N"; 
-                } else if (docName.includes('Aadhaar')) {
-                  authorityStr = "Unique Identification Authority of India (UIDAI)";
-                } else if (docName.includes('Marksheet') || docName.includes('Degree')) {
-                  authorityStr = "Central Board of Secondary Education";
+                if (!userDoc?.document?.logoUrl) {
+                  // Apply fallback specific icons if no custom logo was provided
+                  if (docName.includes('APAAR')) {
+                    authorityStr = "Academic Bank of Credits";
+                    logoUrl = "https://lh3.googleusercontent.com/aida-public/AB6AXuDKJXZU0PqF8zM3B3oVqj1Q_gM4C6w2zK_7s1vT9jRzD5qX_x8Z7W_QY_t_m_N_N_N_N_N_N_N_N_N_N_N_N_N_N_N_N_N_N_N_N_N_N_N_N_N_N_N_N_N_N"; 
+                  } else if (docName.includes('Aadhaar')) {
+                    authorityStr = "Unique Identification Authority of India (UIDAI)";
+                  } else if (docName.includes('Marksheet') || docName.includes('Degree')) {
+                    authorityStr = "Central Board of Secondary Education";
+                  }
+                } else {
+                  // Set generic authority based on keywords even if logo is custom
+                  if (docName.includes('APAAR')) authorityStr = "Academic Bank of Credits";
+                  else if (docName.includes('Aadhaar')) authorityStr = "Unique Identification Authority of India (UIDAI)";
+                  else if (docName.includes('Marksheet') || docName.includes('Degree')) authorityStr = "Central Board of Secondary Education";
                 }
 
                 return (

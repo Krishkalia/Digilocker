@@ -68,11 +68,11 @@ export default function SearchScreen({ navigation }) {
             onChangeText={setSearchQuery}
             autoFocus={true}
           />
-          {searchQuery.length > 0 && (
+          {searchQuery.length > 0 ? (
             <TouchableOpacity onPress={() => setSearchQuery('')} className="p-1 ml-2">
               <FontAwesome5 name="times-circle" size={16} color="#9ca3af" />
             </TouchableOpacity>
-          )}
+          ) : null}
         </View>
       </View>
 

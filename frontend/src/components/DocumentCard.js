@@ -42,9 +42,9 @@ export default function DocumentCard({
         </View>
         <View className="flex-1 justify-center">
           <Text className="font-bold text-gray-800 text-[16px]">{title}</Text>
-          {subtitle && (
+          {subtitle ? (
              <Text className="text-gray-500 text-[13px]">{subtitle}</Text>
-          )}
+          ) : null}
         </View>
       </View>
 
@@ -54,13 +54,13 @@ export default function DocumentCard({
       </Text>
 
       {/* Optional Action Button */}
-      {buttonText && (
+      {buttonText ? (
         <View className="mt-2">
           <View className="bg-[#3838D9] rounded-full py-3 items-center justify-center">
             <Text className="text-white font-bold text-[14px]">{buttonText}</Text>
           </View>
         </View>
-      )}
+      ) : null}
     </TouchableOpacity>
   );
 }
