@@ -42,35 +42,53 @@ export default function HomeScreen({ navigation }) {
 
   const { width: screenWidth } = Dimensions.get('window');
 
-  // Hardcode the first document styling to perfectly match the screenshot for visual fidelity
-  let featuredDoc = null;
-  if (documents && documents.length > 0) {
-    const doc = documents[0];
-    const docName = doc?.document?.documentName || 'Aadhaar Card';
-    let logoUrl = 'https://lh3.googleusercontent.com/aida-public/AB6AXuDxbJv-DsOFG-BRJgzdkiV00fbNdVCG5YlMBVm6CVGyW0yz_2kOMwsfGRQkh5p4nBR6rEhhFX6YbuS8j_UGiPIj-z8mzmJa_fqPRxSRSoWnXPz_6SzgP0H-krGimYECyCC8UFfMAS0C8YTqSGWvR8uPIhznvhdY5F0ebC8loOC4btgjg0CrgipaZeg1CQ5y2TssJjRKh_ksUBJkIuU2q5WCU2-wbgVh1ypCQWk4UqhafSsx6Gvo30dfLHRc2qRPcKfR3c0X0H1zYDHn'; 
-    let bgLogoUrl = 'https://lh3.googleusercontent.com/aida-public/AB6AXuAfKw5FmaglRxoOMNc_BAO8OKbw4jkDaANA7DqLYwxjMKeaS9mMRudZtrvNhLw1oysrPknCLoY0qgBS2Mlz3vbIs2bQZkr4bTGQM7i_rjMCVnU7jVfbStnxegb_p04byG5NDu6IyiOIUIXJjIS8oiFWYsZrPLPaOTwlSLfGEOgfcGLk8OfBRgCPORViS0J2-B2Oy-NeveOUCyVnuXNuUW9mZSkNZ__RspRiROLmMK5AJAt58jXFTDKWYKWhtgmzTiscE91ndpDjWjVu';
-    let authorityStr = "Unique Identification Authority of India (UIDAI)";
-
-    featuredDoc = (
-      <DocumentCard 
-        key={doc._id}
-        title={docName}
-        subtitle="XXXX-XXXX-XXXX"
-        authority={authorityStr}
-        logoUrl={logoUrl}
-        bgLogoUrl={bgLogoUrl}
-        onPress={() => handleDocumentPress(doc)}
-      />
-    );
-  } else if (!loading) {
-    featuredDoc = (
-      <View className="bg-white rounded-2xl shadow-md p-6 mb-6 items-center">
-        <Text className="text-gray-500 italic">No documents found.</Text>
-      </View>
-    );
-  } else {
-    featuredDoc = <ActivityIndicator size="large" color="#3838D9" className="my-6" />;
-  }
+  const predefinedDocs = [
+    {
+      id: 'doc-aadhaar',
+      title: 'Aadhaar Card',
+      subtitle: 'XXXX-XXXX-XXXX',
+      authority: 'Unique Identification Authority of India (UIDAI)',
+      logoUrl: 'https://cdn-icons-png.flaticon.com/512/3135/3135686.png',
+      bgLogoUrl: 'https://cdn-icons-png.flaticon.com/512/3135/3135686.png',
+      buttonText: null
+    },
+    {
+      id: 'doc-10th',
+      title: 'Class X Marksheet',
+      subtitle: 'Central Board of Secondary Education',
+      authority: '',
+      logoUrl: 'https://cdn-icons-png.flaticon.com/512/2231/2231557.png',
+      bgLogoUrl: 'https://cdn-icons-png.flaticon.com/512/2231/2231557.png',
+      buttonText: null
+    },
+    {
+      id: 'doc-12th',
+      title: 'Class XII Marksheet',
+      subtitle: 'Central Board of Secondary Education',
+      authority: '',
+      logoUrl: 'https://cdn-icons-png.flaticon.com/512/2231/2231557.png',
+      bgLogoUrl: 'https://cdn-icons-png.flaticon.com/512/2231/2231557.png',
+      buttonText: null
+    },
+    {
+      id: 'doc-pan',
+      title: 'PAN Verification Record',
+      subtitle: 'ABCDE1234F',
+      authority: 'Income Tax Department',
+      logoUrl: 'https://cdn-icons-png.flaticon.com/512/2965/2965403.png',
+      bgLogoUrl: 'https://cdn-icons-png.flaticon.com/512/2965/2965403.png',
+      buttonText: 'Get Now'
+    },
+    {
+      id: 'doc-dl',
+      title: 'Driving License',
+      subtitle: 'XX-12-34567890123',
+      authority: 'Ministry of Road Transport and Highways',
+      logoUrl: require('../../assets/Ahoka-removebg-preview.png'),
+      bgLogoUrl: require('../../assets/Ahoka-removebg-preview.png'),
+      buttonText: 'Get Now'
+    }
+  ];
 
   return (
     <SafeAreaView className="flex-1 bg-white">
@@ -106,13 +124,17 @@ export default function HomeScreen({ navigation }) {
             <Text className="text-white text-[24px] font-bold flex-1">
               Welcome, {user?.username ? user.username : 'Krish Kalia'}!
             </Text>
-            <View className="h-12 w-12 rounded-full overflow-hidden border-2 border-white ml-2 bg-gray-300">
+            <TouchableOpacity 
+              activeOpacity={0.8}
+              onPress={() => navigation.navigate('Profile')}
+              className="h-12 w-12 rounded-full overflow-hidden border-2 border-white ml-2 bg-gray-300"
+            >
               <Image 
-                source={{ uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCZl2UCyUrgfkHyjEmAsTb664W_sBnMy6dD_ivbmPCLFI_yKJGT3EMeioF1zSDPJdwLhsGKPX5WfvXFn42utlbpTb8BtDy5NPi8yF7LiqpS2e9byFOTTtaE7fGNoOZZ55Ac4pU8mC9pNabHJzVpoZS93beTcVJtPr8wyScUA1QFVs_l-fGktX4A3V3is0onVV3agRa-Umrjo-1y08fATGSD1ty7Wjwr3Wl79DOXZhKdmoyFlEoN4Tx203x7hdaZtXtDfPjxnObmEyJf' }}
+                source={{ uri: user?.profilePhotoUrl ? user.profilePhotoUrl : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png' }}
                 className="w-full h-full"
                 resizeMode="cover"
               />
-            </View>
+            </TouchableOpacity>
           </View>
 
           {/* Subtitle */}
@@ -142,9 +164,28 @@ export default function HomeScreen({ navigation }) {
           zIndex: 10
         }} />
 
-        {/* Floating Featured Document */}
-        <View className="px-5 -mt-10 z-20">
-          {featuredDoc}
+        {/* Horizontally Scrollable Featured Documents */}
+        <View className="-mt-10 z-20">
+          <ScrollView 
+            horizontal 
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={{ paddingHorizontal: 20 }}
+            snapToInterval={280 + 16} // card width (280) + margin (16)
+            decelerationRate="fast"
+          >
+            {predefinedDocs.map((doc) => (
+              <DocumentCard 
+                key={doc.id}
+                title={doc.title}
+                subtitle={doc.subtitle}
+                authority={doc.authority}
+                logoUrl={doc.logoUrl}
+                bgLogoUrl={doc.bgLogoUrl}
+                buttonText={doc.buttonText}
+                onPress={() => navigation.navigate('Issued')}
+              />
+            ))}
+          </ScrollView>
         </View>
 
         {/* Promotional Banner Carousel */}
@@ -178,7 +219,7 @@ export default function HomeScreen({ navigation }) {
               </View>
               <View className="w-[40%] items-center justify-end h-full">
                 <Image 
-                  source={{ uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDr4tu47-V2U2wqg54m1xyr8tcjlhhjjItb4sgIFC366UkWQoPGu4S1ImDgUACYNUMsxSs0VUp7P7itYr9BnGcgxu2My6GY2CwIhv_QghpxtpDI-Bf-53W4dSMAqXyAc7vNFYTF5DvK4unOyxzTfRwUei92YkYtL60YpwnA18fLljKH6BXhjEaVkh7rrZOpGbanWsF76bj59lam4C1rmnZFu0GkvJatQGsAxQCd9LJk_FYwX88K17KxVLdnR-eeoXQyOug9bO3PNqUT' }}
+                  source={require('../../assets/umang_illustration.png')}
                   className="w-[80px] h-[100px]"
                   resizeMode="contain"
                 />

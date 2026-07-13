@@ -26,9 +26,14 @@ app.get('/', (req, res) => {
 // Routes
 const authRoutes = require('./routes/authRoutes');
 const documentRoutes = require('./routes/documentRoutes');
+const adminRoutes = require('./routes/adminRoutes');
+const path = require('path');
+
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.use('/api/auth', authRoutes);
 app.use('/api/documents', documentRoutes);
+app.use('/api/admin', adminRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

@@ -21,6 +21,17 @@ const userSchema = new mongoose.Schema({
     type: String,
     trim: true
   },
+  dob: {
+    type: Date
+  },
+  gender: {
+    type: String,
+    enum: ['Male', 'Female', 'Other']
+  },
+  profilePhotoUrl: {
+    type: String,
+    default: null
+  },
   isActive: {
     type: Boolean,
     default: true

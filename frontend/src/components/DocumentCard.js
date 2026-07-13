@@ -7,41 +7,60 @@ export default function DocumentCard({
   authority, 
   logoUrl, 
   bgLogoUrl,
+  buttonText,
   onPress
 }) {
   return (
     <TouchableOpacity 
       activeOpacity={0.8}
       onPress={onPress}
-      className="bg-white rounded-2xl shadow-md p-4 mb-6 flex-row items-start overflow-hidden"
+      className="bg-white rounded-2xl shadow-sm p-4 mr-4 flex-col overflow-hidden border border-gray-100"
+      style={{ width: 280, elevation: 2 }}
     >
       {/* Faint Background Logo */}
       {bgLogoUrl ? (
-        <View className="absolute -right-5 -bottom-5 opacity-5">
+        <View className="absolute right-0 bottom-0 opacity-5 w-32 h-32 justify-end items-end">
           <Image 
-            source={{ uri: bgLogoUrl }}
-            className="w-32 h-32 rounded-full"
+            source={typeof bgLogoUrl === 'number' ? bgLogoUrl : { uri: bgLogoUrl }}
+            className="w-full h-full"
+            resizeMode="contain"
+            style={{ transform: [{ translateX: 20 }, { translateY: 20 }] }}
           />
         </View>
       ) : null}
       
-      {/* Card Content */}
-      <View className="bg-white p-1 rounded mr-4">
-        {logoUrl ? (
-          <Image 
-            source={{ uri: logoUrl }}
-            className="h-10 w-10"
-            resizeMode="contain"
-          />
-        ) : null}
+      {/* Top Row: Logo & Title */}
+      <View className="flex-row items-center mb-3">
+        <View className="bg-white rounded mr-3">
+          {logoUrl ? (
+            <Image 
+              source={typeof logoUrl === 'number' ? logoUrl : { uri: logoUrl }}
+              className="h-12 w-12"
+              resizeMode="contain"
+            />
+          ) : null}
+        </View>
+        <View className="flex-1 justify-center">
+          <Text className="font-bold text-gray-800 text-[16px]">{title}</Text>
+          {subtitle && (
+             <Text className="text-gray-500 text-[13px]">{subtitle}</Text>
+          )}
+        </View>
       </View>
-      <View className="flex-1">
-        <Text className="font-semibold text-gray-800 text-base">{title}</Text>
-        <Text className="text-gray-500 text-sm mb-2 font-mono">{subtitle}</Text>
-        <Text className="text-xs text-gray-500 leading-tight">
-          {authority}
-        </Text>
-      </View>
+
+      {/* Authority Text */}
+      <Text className="text-[13px] text-gray-600 mb-3">
+        {authority}
+      </Text>
+
+      {/* Optional Action Button */}
+      {buttonText && (
+        <View className="mt-2">
+          <View className="bg-[#3838D9] rounded-full py-3 items-center justify-center">
+            <Text className="text-white font-bold text-[14px]">{buttonText}</Text>
+          </View>
+        </View>
+      )}
     </TouchableOpacity>
   );
 }

@@ -37,7 +37,10 @@ const login = async (req, res) => {
         id: user._id,
         username: user.username,
         email: user.email,
-        phoneNumber: user.phoneNumber
+        phoneNumber: user.phoneNumber,
+        dob: user.dob,
+        gender: user.gender,
+        profilePhotoUrl: user.profilePhotoUrl
       }
     });
   } catch (error) {

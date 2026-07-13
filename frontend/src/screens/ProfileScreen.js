@@ -44,7 +44,7 @@ export default function ProfileScreen({ navigation }) {
           {/* Avatar with White Border */}
           <View className="w-32 h-32 rounded-full border-[5px] border-white overflow-hidden bg-gray-200 shadow-sm mb-3">
             <Image 
-              source={{ uri: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCZl2UCyUrgfkHyjEmAsTb664W_sBnMy6dD_ivbmPCLFI_yKJGT3EMeioF1zSDPJdwLhsGKPX5WfvXFn42utlbpTb8BtDy5NPi8yF7LiqpS2e9byFOTTtaE7fGNoOZZ55Ac4pU8mC9pNabHJzVpoZS93beTcVJtPr8wyScUA1QFVs_l-fGktX4A3V3is0onVV3agRa-Umrjo-1y08fATGSD1ty7Wjwr3Wl79DOXZhKdmoyFlEoN4Tx203x7hdaZtXtDfPjxnObmEyJf' }}
+              source={{ uri: user?.profilePhotoUrl ? user.profilePhotoUrl : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png' }}
               className="w-full h-full"
               resizeMode="cover"
             />
@@ -69,17 +69,19 @@ export default function ProfileScreen({ navigation }) {
             
             <View className="flex-row py-5 px-5 border-b border-gray-100">
               <Text className="w-24 font-bold text-gray-900 text-[15px]">DOB</Text>
-              <Text className="flex-1 text-gray-600 text-[15px]">21-01-2006</Text>
+              <Text className="flex-1 text-gray-600 text-[15px]">
+                {user?.dob ? new Date(user.dob).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' }).replace(/\//g, '-') : 'Not Provided'}
+              </Text>
             </View>
 
             <View className="flex-row py-5 px-5 border-b border-gray-100">
               <Text className="w-24 font-bold text-gray-900 text-[15px]">Gender</Text>
-              <Text className="flex-1 text-gray-600 text-[15px]">Male</Text>
+              <Text className="flex-1 text-gray-600 text-[15px]">{user?.gender || 'Not Provided'}</Text>
             </View>
 
             <View className="flex-row py-5 px-5 border-b border-gray-100 items-center">
               <Text className="w-24 font-bold text-gray-900 text-[15px]">Mobile</Text>
-              <Text className="flex-1 text-gray-600 text-[15px]">8360754129</Text>
+              <Text className="flex-1 text-gray-600 text-[15px]">{user?.phoneNumber || 'Not Provided'}</Text>
               <TouchableOpacity>
                 <FontAwesome5 name="edit" size={14} color="#6b7280" />
               </TouchableOpacity>
@@ -88,7 +90,7 @@ export default function ProfileScreen({ navigation }) {
             <View className="flex-row py-5 px-5 items-center">
               <Text className="w-24 font-bold text-gray-900 text-[15px]">Email</Text>
               <View className="flex-1">
-                <Text className="text-gray-600 text-[15px]">krishkaliajal10@gmail.com</Text>
+                <Text className="text-gray-600 text-[15px]">{user?.email || 'Not Provided'}</Text>
               </View>
               <TouchableOpacity className="mr-3">
                 <FontAwesome5 name="exclamation-triangle" size={14} color="#f59e0b" />
