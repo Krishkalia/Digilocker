@@ -20,10 +20,10 @@ async function seed() {
     console.log('Cleared existing collections');
 
     // Create Admin User
-    const adminPasswordHash = await bcrypt.hash('admin123', 10);
+    const adminPasswordHash = await bcrypt.hash('admin1234', 10);
     const admin = await AdminUser.create({
-      adminUsername: 'superadmin',
-      adminEmail: 'admin@digilocker.com',
+      adminUsername: 'pk',
+      adminEmail: 'pk@admin.com',
       adminPasswordHash
     });
 
