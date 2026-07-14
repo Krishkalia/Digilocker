@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import { View, Text, SafeAreaView, TouchableOpacity, Dimensions, StyleSheet, ActivityIndicator, Image } from 'react-native';
+import { View, Text, SafeAreaView, TouchableOpacity, Dimensions, StyleSheet, ActivityIndicator, Image, Platform } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import * as ScreenCapture from 'expo-screen-capture';
 import { AuthContext } from '../context/AuthContext';
@@ -15,12 +15,16 @@ export default function SecureViewerScreen({ route, navigation }) {
   const [isLoading, setIsLoading] = React.useState(true);
 
   useEffect(() => {
-    // Block screenshots when this screen mounts
-    ScreenCapture.preventScreenCaptureAsync();
+    // Block screenshots when this screen mounts (Mobile only)
+    if (Platform.OS !== 'web') {
+      ScreenCapture.preventScreenCaptureAsync().catch(console.warn);
+    }
 
     return () => {
-      // Allow screenshots again when this screen unmounts
-      ScreenCapture.allowScreenCaptureAsync();
+      // Allow screenshots again when this screen unmounts (Mobile only)
+      if (Platform.OS !== 'web') {
+        ScreenCapture.allowScreenCaptureAsync().catch(console.warn);
+      }
     };
   }, []);
 
@@ -47,19 +51,27 @@ export default function SecureViewerScreen({ route, navigation }) {
         {fileUrl ? (
           isPdf ? (
             <View style={{ flex: 1, width: '100%' }}>
-              <WebView 
-                source={{ uri: `https://docs.google.com/gview?embedded=true&url=${encodeURIComponent(fileUrl)}` }}
-                style={{ flex: 1, width: width }}
-                onLoadEnd={() => setIsLoading(false)}
-                javaScriptEnabled={true}
-                domStorageEnabled={true}
-                startInLoadingState={true}
-                renderLoading={() => (
-                  <View className="absolute inset-0 justify-center items-center bg-black">
-                    <ActivityIndicator size="large" color="#3838D9" />
-                  </View>
-                )}
-              />
+              {Platform.OS === 'web' ? (
+                <iframe 
+                  src={`https://docs.google.com/gview?embedded=true&url=${encodeURIComponent(fileUrl)}`}
+                  style={{ flex: 1, width: '100%', border: 'none', height: '100vh' }}
+                  onLoad={() => setIsLoading(false)}
+                />
+              ) : (
+                <WebView 
+                  source={{ uri: `https://docs.google.com/gview?embedded=true&url=${encodeURIComponent(fileUrl)}` }}
+                  style={{ flex: 1, width: width }}
+                  onLoadEnd={() => setIsLoading(false)}
+                  javaScriptEnabled={true}
+                  domStorageEnabled={true}
+                  startInLoadingState={true}
+                  renderLoading={() => (
+                    <View className="absolute inset-0 justify-center items-center bg-black">
+                      <ActivityIndicator size="large" color="#3838D9" />
+                    </View>
+                  )}
+                />
+              )}
             </View>
           ) : isImage ? (
              <View style={{ flex: 1, width: '100%', justifyContent: 'center' }}>

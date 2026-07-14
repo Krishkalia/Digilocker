@@ -18,8 +18,15 @@ export const AuthProvider = ({ children }) => {
 
   const loadUser = async () => {
     try {
-      const token = await SecureStore.getItemAsync('userToken');
-      const userData = await SecureStore.getItemAsync('userData');
+      let token, userData;
+      if (Platform.OS === 'web') {
+        token = localStorage.getItem('userToken');
+        userData = localStorage.getItem('userData');
+      } else {
+        token = await SecureStore.getItemAsync('userToken');
+        userData = await SecureStore.getItemAsync('userData');
+      }
+      
       if (token && userData) {
         setUser(JSON.parse(userData));
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
@@ -36,8 +43,13 @@ export const AuthProvider = ({ children }) => {
       const res = await axios.post(`${API_URL}/auth/login`, { email, password });
       const { token, user: userData } = res.data;
       
-      await SecureStore.setItemAsync('userToken', token);
-      await SecureStore.setItemAsync('userData', JSON.stringify(userData));
+      if (Platform.OS === 'web') {
+        localStorage.setItem('userToken', token);
+        localStorage.setItem('userData', JSON.stringify(userData));
+      } else {
+        await SecureStore.setItemAsync('userToken', token);
+        await SecureStore.setItemAsync('userData', JSON.stringify(userData));
+      }
       
       setUser(userData);
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
@@ -50,8 +62,13 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      await SecureStore.deleteItemAsync('userToken');
-      await SecureStore.deleteItemAsync('userData');
+      if (Platform.OS === 'web') {
+        localStorage.removeItem('userToken');
+        localStorage.removeItem('userData');
+      } else {
+        await SecureStore.deleteItemAsync('userToken');
+        await SecureStore.deleteItemAsync('userData');
+      }
       setUser(null);
       delete axios.defaults.headers.common['Authorization'];
     } catch (e) {
@@ -63,7 +80,11 @@ export const AuthProvider = ({ children }) => {
     try {
       const newUser = { ...user, ...updatedData };
       setUser(newUser);
-      await SecureStore.setItemAsync('userData', JSON.stringify(newUser));
+      if (Platform.OS === 'web') {
+        localStorage.setItem('userData', JSON.stringify(newUser));
+      } else {
+        await SecureStore.setItemAsync('userData', JSON.stringify(newUser));
+      }
     } catch (e) {
       console.error('Failed to update user context', e);
     }
