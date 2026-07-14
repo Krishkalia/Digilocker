@@ -51,7 +51,7 @@ export default function IssuedDocumentsScreen({ navigation }) {
               <Image 
                 source={require('../../assets/Ahoka-removebg-preview.png')}
                 className="h-12 w-8"
-                style={{ tintColor: 'white' }}
+                style={{ tintColor: 'white', width: 32, height: 48 }}
                 resizeMode="contain"
               />
               {/* Vertical Divider */}
