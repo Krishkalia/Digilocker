@@ -34,9 +34,9 @@ export default function IssuedDocumentsScreen({ navigation }) {
   const { width: screenWidth } = Dimensions.get('window');
 
   return (
-    <SafeAreaView className="flex-1 bg-white">
+    <SafeAreaView className="flex-1 bg-white" style={{ flex: 1 }}>
       {/* Background container so white is behind the blue */}
-      <View className="flex-1 bg-white">
+      <View className="flex-1 bg-white" style={{ flex: 1 }}>
         
         {/* Blue Header Section */}
         <View className="bg-[#3838D9] pt-12 pb-6 px-5 relative z-10">
@@ -111,7 +111,7 @@ export default function IssuedDocumentsScreen({ navigation }) {
             My Issued Document({documents ? documents.length : 0})
           </Text>
           
-          <ScrollView className="flex-1" showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 100 }}>
+          <ScrollView className="flex-1" style={{ flex: 1 }} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 100 }}>
             {loading ? (
               <ActivityIndicator size="large" color="#3838D9" className="mt-10" />
             ) : documents && documents.length > 0 ? (

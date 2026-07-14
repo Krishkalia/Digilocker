@@ -91,8 +91,8 @@ export default function HomeScreen({ navigation }) {
   ];
 
   return (
-    <SafeAreaView className="flex-1 bg-white">
-      <ScrollView className="flex-1" showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 100 }}>
+    <SafeAreaView className="flex-1 bg-white" style={{ flex: 1 }}>
+      <ScrollView className="flex-1" style={{ flex: 1 }} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 100 }}>
         
         {/* Blue Header Section */}
         <View className="bg-[#3838D9] pt-8 pb-10 px-5 relative z-10">
