@@ -10,7 +10,7 @@ export default function ProfileScreen({ navigation }) {
   const { width: screenWidth } = Dimensions.get('window');
   const [uploading, setUploading] = useState(false);
 
-  const API_URL = 'http://192.168.1.5:5000/api'; 
+  const API_URL = 'https://digilocker-z2jm.onrender.com/api'; 
 
   const pickImage = async () => {
     try {

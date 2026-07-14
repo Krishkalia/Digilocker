@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   // Platform specific localhost for Android emulator (10.0.2.2) vs iOS (localhost)
-  const API_URL = 'http://192.168.1.5:5000/api'; 
+  const API_URL = 'https://digilocker-z2jm.onrender.com/api'; 
 
   useEffect(() => {
     loadUser();

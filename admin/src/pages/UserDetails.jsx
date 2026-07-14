@@ -4,6 +4,8 @@ import Sidebar from '../components/Sidebar';
 import api from '../api';
 import { ArrowLeft, Trash2, UploadCloud } from 'lucide-react';
 import DocumentModal from '../components/DocumentModal';
+import Swal from 'sweetalert2';
+import toast from 'react-hot-toast';
 
 export default function UserDetails() {
   const { id } = useParams();
@@ -27,12 +29,24 @@ export default function UserDetails() {
   }, [id]);
 
   const handleDelete = async (userDocId) => {
-    if (window.confirm('Are you sure you want to delete this document mapping?')) {
+    const result = await Swal.fire({
+      title: 'Delete Document?',
+      text: "Are you sure you want to delete this document from this user's locker?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, delete it!'
+    });
+
+    if (result.isConfirmed) {
       try {
         await api.delete(`/documents/${userDocId}`);
         fetchDocuments();
+        toast.success('Document deleted successfully');
       } catch (err) {
         console.error(err);
+        toast.error('Failed to delete document');
       }
     }
   };

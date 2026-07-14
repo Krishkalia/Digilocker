@@ -11,7 +11,7 @@ export default function SearchScreen({ navigation }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(true);
 
-  const API_URL = 'http://192.168.1.5:5000/api';
+  const API_URL = 'https://digilocker-z2jm.onrender.com/api';
 
   useEffect(() => {
     fetchDocuments();

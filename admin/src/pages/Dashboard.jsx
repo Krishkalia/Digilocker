@@ -4,6 +4,8 @@ import Sidebar from '../components/Sidebar';
 import api from '../api';
 import { Search, UserPlus, Edit, Trash2, FolderOpen } from 'lucide-react';
 import UserModal from '../components/UserModal';
+import Swal from 'sweetalert2';
+import toast from 'react-hot-toast';
 
 export default function Dashboard() {
   const [users, setUsers] = useState([]);
@@ -25,12 +27,24 @@ export default function Dashboard() {
   }, []);
 
   const handleDelete = async (id) => {
-    if (window.confirm('Are you sure you want to delete this user and all their documents?')) {
+    const result = await Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this! All their documents will be deleted.",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, delete it!'
+    });
+
+    if (result.isConfirmed) {
       try {
         await api.delete(`/users/${id}`);
         fetchUsers();
+        toast.success('User deleted successfully');
       } catch (err) {
         console.error(err);
+        toast.error('Failed to delete user');
       }
     }
   };

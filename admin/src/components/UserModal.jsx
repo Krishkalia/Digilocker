@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import api from '../api';
 import { X } from 'lucide-react';
+import api from '../api';
+import toast from 'react-hot-toast';
 
 export default function UserModal({ isOpen, onClose, user, onSuccess }) {
   const [formData, setFormData] = useState({
@@ -39,6 +40,7 @@ export default function UserModal({ isOpen, onClose, user, onSuccess }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setUploading(true);
+    setError('');
     try {
       const data = new FormData();
       Object.keys(formData).forEach(key => {
@@ -54,13 +56,17 @@ export default function UserModal({ isOpen, onClose, user, onSuccess }) {
 
       if (user) {
         await api.put(`/users/${user._id}`, data, config);
+        toast.success('User updated successfully');
       } else {
         await api.post('/users', data, config);
+        toast.success('User created successfully');
       }
       onSuccess();
       onClose();
     } catch (err) {
-      setError(err.response?.data?.message || 'Operation failed');
+      const errorMsg = err.response?.data?.message || 'Operation failed';
+      setError(errorMsg);
+      toast.error(errorMsg);
     } finally {
       setUploading(false);
     }

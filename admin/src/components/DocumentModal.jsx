@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import api from '../api';
 import { X } from 'lucide-react';
+import toast from 'react-hot-toast';
 
 export default function DocumentModal({ isOpen, onClose, userId, onSuccess }) {
   const [documentName, setDocumentName] = useState('');
@@ -38,6 +39,7 @@ export default function DocumentModal({ isOpen, onClose, userId, onSuccess }) {
           'Content-Type': 'multipart/form-data'
         }
       });
+      toast.success('Document uploaded successfully');
       setDocumentName('');
       setDocumentTypeName('IDENTITY');
       setExpiryDate('');
@@ -46,7 +48,9 @@ export default function DocumentModal({ isOpen, onClose, userId, onSuccess }) {
       onSuccess();
       onClose();
     } catch (err) {
-      setError(err.response?.data?.message || 'Failed to upload document');
+      const errorMsg = err.response?.data?.message || 'Failed to upload document';
+      setError(errorMsg);
+      toast.error(errorMsg);
     } finally {
       setUploading(false);
     }

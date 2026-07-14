@@ -10,7 +10,7 @@ export default function IssuedDocumentsScreen({ navigation }) {
   const [documents, setDocuments] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const API_URL = 'http://192.168.1.5:5000/api';
+  const API_URL = 'https://digilocker-z2jm.onrender.com/api';
 
   useEffect(() => {
     fetchDocuments();
