@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import api from '../api';
-import { Search, UserPlus, Edit, Trash2, FolderOpen } from 'lucide-react';
+import { Search, UserPlus, Edit, Trash2, FolderOpen, Menu } from 'lucide-react';
 import UserModal from '../components/UserModal';
 import Swal from 'sweetalert2';
 import toast from 'react-hot-toast';
@@ -10,6 +10,7 @@ import toast from 'react-hot-toast';
 export default function Dashboard() {
   const [users, setUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingUser, setEditingUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -73,13 +74,21 @@ export default function Dashboard() {
   );
 
   return (
-    <div className="flex h-screen bg-gray-50">
-      <Sidebar />
+    <div className="flex h-screen bg-gray-50 overflow-hidden">
+      <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
       
       <div className="flex-1 overflow-auto">
-        <div className="p-8">
-          <div className="flex justify-between items-center mb-6">
-            <h1 className="text-2xl font-bold text-gray-900">Users Management</h1>
+        <div className="p-4 md:p-8">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 space-y-4 sm:space-y-0">
+            <div className="flex items-center">
+              <button 
+                onClick={() => setIsSidebarOpen(true)}
+                className="mr-4 text-gray-500 hover:text-gray-900 md:hidden"
+              >
+                <Menu size={24} />
+              </button>
+              <h1 className="text-xl md:text-2xl font-bold text-gray-900">Users Management</h1>
+            </div>
             <button
               onClick={openCreate}
               className="flex items-center px-4 py-2 bg-[#4B39EF] text-white rounded-md hover:bg-[#3b2bcc] transition-colors shadow-sm"
@@ -102,7 +111,7 @@ export default function Dashboard() {
             />
           </div>
 
-          <div className="bg-white shadow-sm rounded-lg overflow-hidden border border-gray-200">
+          <div className="bg-white shadow-sm rounded-lg overflow-x-auto border border-gray-200">
             {loading ? (
               <div className="flex justify-center items-center py-20">
                 <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#4B39EF]"></div>

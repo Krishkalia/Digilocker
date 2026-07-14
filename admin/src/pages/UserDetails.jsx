@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, Link, useLocation } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import api from '../api';
-import { ArrowLeft, Trash2, UploadCloud } from 'lucide-react';
+import { ArrowLeft, Trash2, UploadCloud, Menu } from 'lucide-react';
 import DocumentModal from '../components/DocumentModal';
 import Swal from 'sweetalert2';
 import toast from 'react-hot-toast';
@@ -13,6 +13,7 @@ export default function UserDetails() {
   const username = location.state?.username || 'User';
   
   const [documents, setDocuments] = useState([]);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -59,16 +60,22 @@ export default function UserDetails() {
   };
 
   return (
-    <div className="flex h-screen bg-gray-50">
-      <Sidebar />
+    <div className="flex h-screen bg-gray-50 overflow-hidden">
+      <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
       
       <div className="flex-1 overflow-auto">
-        <div className="p-8">
-          <div className="flex items-center space-x-4 mb-8">
-            <Link to="/" className="p-2 text-gray-500 hover:text-gray-900 bg-white rounded-full shadow-sm border border-gray-200">
-              <ArrowLeft size={20} />
+        <div className="p-4 md:p-8">
+          <div className="flex items-center mb-6">
+            <button 
+              onClick={() => setIsSidebarOpen(true)}
+              className="mr-3 text-gray-500 hover:text-gray-900 md:hidden"
+            >
+              <Menu size={24} />
+            </button>
+            <Link to="/" className="p-2 mr-3 text-gray-500 hover:text-gray-900 bg-white rounded-full shadow-sm border border-gray-200">
+              <ArrowLeft size={18} />
             </Link>
-            <h1 className="text-2xl font-bold text-gray-900">{username}'s Documents</h1>
+            <h1 className="text-xl md:text-2xl font-bold text-gray-900 truncate max-w-[200px] sm:max-w-none">{username}'s Documents</h1>
           </div>
 
           <div className="flex justify-end mb-6">
@@ -81,7 +88,7 @@ export default function UserDetails() {
             </button>
           </div>
 
-          <div className="bg-white shadow-sm rounded-lg overflow-hidden border border-gray-200">
+          <div className="bg-white shadow-sm rounded-lg overflow-x-auto border border-gray-200">
             {loading ? (
               <div className="flex justify-center items-center py-20">
                 <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#4B39EF]"></div>
