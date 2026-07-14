@@ -38,8 +38,11 @@ export default function UserDetails() {
       text: "Are you sure you want to delete this document from this user's locker?",
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#d33',
-      cancelButtonColor: '#3085d6',
+      customClass: {
+        confirmButton: 'bg-red-600 text-white px-4 py-2 rounded-md ml-3 hover:bg-red-700 transition-colors',
+        cancelButton: 'bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600 transition-colors'
+      },
+      buttonsStyling: false,
       confirmButtonText: 'Yes, delete it!'
     });
 
