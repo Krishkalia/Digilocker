@@ -36,6 +36,7 @@ export default function DocumentCard({
             <Image 
               source={typeof logoUrl === 'number' ? logoUrl : { uri: logoUrl }}
               className="h-12 w-12"
+              style={{ width: 48, height: 48 }}
               resizeMode="contain"
             />
           ) : null}

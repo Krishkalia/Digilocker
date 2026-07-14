@@ -102,7 +102,7 @@ export default function HomeScreen({ navigation }) {
             <Image 
               source={require('../../assets/Ahoka-removebg-preview.png')}
               className="h-12 w-8"
-              style={{ tintColor: 'white' }}
+              style={{ tintColor: 'white', height: 48, width: 32 }}
               resizeMode="contain"
             />
             <View className="h-10 w-[1px] bg-white/40 mx-3" />
@@ -221,6 +221,7 @@ export default function HomeScreen({ navigation }) {
                 <Image 
                   source={require('../../assets/umang_illustration.png')}
                   className="w-[80px] h-[100px]"
+                  style={{ width: 80, height: 100 }}
                   resizeMode="contain"
                 />
               </View>
