@@ -21,7 +21,7 @@ export default function DocumentCard({
       {bgLogoUrl ? (
         <View className="absolute right-0 bottom-0 opacity-5 w-32 h-32 justify-end items-end">
           <Image 
-            source={typeof bgLogoUrl === 'number' ? bgLogoUrl : { uri: bgLogoUrl }}
+            source={(typeof bgLogoUrl === 'string' && bgLogoUrl.startsWith('http')) ? { uri: bgLogoUrl } : bgLogoUrl}
             className="w-full h-full"
             resizeMode="contain"
             style={{ transform: [{ translateX: 20 }, { translateY: 20 }] }}
@@ -34,7 +34,7 @@ export default function DocumentCard({
         <View className="bg-white rounded mr-3">
           {logoUrl ? (
             <Image 
-              source={typeof logoUrl === 'number' ? logoUrl : { uri: logoUrl }}
+              source={(typeof logoUrl === 'string' && logoUrl.startsWith('http')) ? { uri: logoUrl } : logoUrl}
               className="h-12 w-12"
               style={{ width: 48, height: 48 }}
               resizeMode="contain"
