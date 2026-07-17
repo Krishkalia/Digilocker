@@ -5,9 +5,11 @@ import axios from 'axios';
 import DocumentCard from '../components/DocumentCard';
 import { AuthContext } from '../context/AuthContext';
 
-const UtilityItem = ({ icon, color, label }) => (
+const UtilityItem = ({ imageSource, label }) => (
   <TouchableOpacity className="w-[31%] bg-gray-50 rounded-xl items-center justify-center py-4 mb-3 border border-gray-100 shadow-sm" style={{ elevation: 1 }}>
-    <FontAwesome5 name={icon} size={28} color={color} className="mb-2" />
+    {imageSource ? (
+      <Image source={imageSource} className="h-9 w-9 mb-2" resizeMode="contain" />
+    ) : null}
     <Text className="text-[11px] font-medium text-gray-700 text-center px-1" numberOfLines={2}>
       {label}
     </Text>
@@ -278,19 +280,19 @@ export default function HomeScreen({ navigation }) {
           <Text className="text-gray-800 text-[18px] font-bold mb-4">DigiLocker Utility</Text>
           
           <View className="flex-row flex-wrap justify-between">
-            <UtilityItem icon="unlock-alt" color="#3b82f6" label="Authenticator" />
-            <UtilityItem icon="folder" color="#f59e0b" label="Drive" />
-            <UtilityItem icon="id-badge" color="#3b82f6" label="Verifiable Credential" />
+            <UtilityItem imageSource={require('../../assets/Authenticator.png')} label="Authenticator" />
+            <UtilityItem imageSource={require('../../assets/Drive.png')} label="Drive" />
+            <UtilityItem imageSource={require('../../assets/Verifiable_Credential.png')} label="Verifiable Credential" />
             
-            <UtilityItem icon="landmark" color="#4b5563" label="Govt. Employee" />
-            <UtilityItem icon="users" color="#ec4899" label="Nominee" />
-            <UtilityItem icon="file-contract" color="#8b5cf6" label="My Consent" />
+            <UtilityItem imageSource={require('../../assets/Ahoka-removebg-preview.png')} label="Govt. Employee" />
+            <UtilityItem imageSource={require('../../assets/nominee.png')} label="Nominee" />
+            <UtilityItem imageSource={require('../../assets/my_consent.png')} label="My Consent" />
             
-            <UtilityItem icon="clipboard-list" color="#64748b" label="My Activity" />
-            <UtilityItem icon="qrcode" color="#475569" label="Scan QR" />
-            <UtilityItem icon="hand-pointer" color="#e97818" label="UMANG" />
+            <UtilityItem imageSource={require('../../assets/my_activity.png')} label="My Activity" />
+            <UtilityItem imageSource={require('../../assets/qr.png')} label="Scan QR" />
+            <UtilityItem imageSource={require('../../assets/umang.png')} label="UMANG" />
             
-            <UtilityItem icon="plus-circle" color="#1d4ed8" label="ABHA" />
+            <UtilityItem imageSource={require('../../assets/ABHA.png')} label="ABHA" />
           </View>
         </View>
 
