@@ -8,7 +8,7 @@ import { AuthContext } from '../context/AuthContext';
 const UtilityItem = ({ imageSource, label }) => (
   <TouchableOpacity className="w-[31%] bg-gray-50 rounded-xl items-center justify-center py-4 mb-3 border border-gray-100 shadow-sm" style={{ elevation: 1 }}>
     {imageSource ? (
-      <Image source={imageSource} className="h-9 w-9 mb-2" resizeMode="contain" />
+      <Image source={imageSource} className="h-14 w-14 mb-2" resizeMode="contain" />
     ) : null}
     <Text className="text-[11px] font-medium text-gray-700 text-center px-1" numberOfLines={2}>
       {label}
