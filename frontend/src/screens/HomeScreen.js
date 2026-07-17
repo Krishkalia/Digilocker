@@ -8,7 +8,13 @@ import { AuthContext } from '../context/AuthContext';
 const UtilityItem = ({ imageSource, label }) => (
   <TouchableOpacity className="w-[31%] bg-[#F5F6F8] rounded-xl items-center justify-center py-4 mb-3" activeOpacity={0.7}>
     {imageSource ? (
-      <View style={{ width: 64, height: 64, marginBottom: 8, alignItems: 'center', justifyContent: 'center' }}>
+      <View style={{ 
+        width: Platform.OS === 'web' ? 64 : 80, 
+        height: Platform.OS === 'web' ? 64 : 80, 
+        marginBottom: 8, 
+        alignItems: 'center', 
+        justifyContent: 'center' 
+      }}>
         <Image source={imageSource} style={{ width: '100%', height: '100%' }} resizeMode="contain" />
       </View>
     ) : null}
