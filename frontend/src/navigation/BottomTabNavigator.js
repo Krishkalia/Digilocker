@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, Platform } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { FontAwesome5 } from '@expo/vector-icons';
+import { FontAwesome5, Feather, Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import HomeScreen from '../screens/HomeScreen';
@@ -35,32 +35,49 @@ function CustomTabBar({ state, descriptors, navigation }) {
           }
         };
 
+        let IconComponent = FontAwesome5;
         let iconName = '';
-        if (route.name === 'Home') iconName = 'home';
-        else if (route.name === 'Search') iconName = 'search';
-        else if (route.name === 'Issued') iconName = 'award';
-        else if (route.name === 'Menu') iconName = 'user';
+        let IconSize = 22;
+
+        if (route.name === 'Home') {
+          // Custom Home Icon will be handled inside the return
+        } else if (route.name === 'Search') {
+          IconComponent = Feather;
+          iconName = 'search';
+        } else if (route.name === 'Issued') {
+          IconComponent = Ionicons;
+          iconName = 'ribbon-outline';
+          IconSize = 24;
+        } else if (route.name === 'Menu') {
+          IconComponent = Feather;
+          iconName = 'user';
+        }
 
         return (
           <TouchableOpacity
             key={route.key}
             onPress={onPress}
-            className="flex-1 items-center justify-center pt-2"
+            className="flex-1 items-center justify-center pt-2 pb-1"
           >
-            <View>
-              <FontAwesome5 
-                name={iconName} 
-                size={20} 
-                color={isFocused ? '#4a2bcf' : '#6b7280'} 
-                solid={isFocused || route.name === 'Home'} // FontAwesome 5 solid state
-              />
-              {/* Notification dot for Issued */}
-              {route.name === 'Issued' ? (
-                <View className="absolute -top-1 -right-2 h-2.5 w-2.5 rounded-full bg-red-500 border border-white" />
-              ) : null}
+            <View className="items-center justify-center h-7 mb-1">
+              {route.name === 'Home' ? (
+                <View className="relative justify-center items-center">
+                  <FontAwesome5 name="file" size={22} color={isFocused ? '#3a00e5' : '#6b7280'} solid />
+                  <View className="absolute top-[8px] items-center justify-center">
+                    <FontAwesome5 name="cloud" size={12} color="white" solid />
+                    <View className="absolute w-[2px] h-[5px] rounded-full mt-0.5" style={{ backgroundColor: isFocused ? '#3a00e5' : '#6b7280' }} />
+                  </View>
+                </View>
+              ) : (
+                <IconComponent 
+                  name={iconName} 
+                  size={IconSize} 
+                  color={isFocused ? '#3a00e5' : '#6b7280'} 
+                />
+              )}
             </View>
             <Text 
-              className={`text-[9px] mt-1 ${isFocused ? 'text-[#4a2bcf] font-bold' : 'text-gray-500'}`}
+              className={`text-[11px] ${isFocused ? 'text-[#3a00e5] font-bold' : 'text-gray-500 font-medium'}`}
             >
               {route.name}
             </Text>
@@ -68,19 +85,16 @@ function CustomTabBar({ state, descriptors, navigation }) {
         );
       })}
 
-      {/* UMANG Floating Tab Button - Outside of standard routes */}
+      {/* UMANG Floating Tab Button */}
       <TouchableOpacity 
-        className="absolute right-0 bg-[#e97818] w-20 h-14 rounded-tl-3xl items-center justify-center shadow-md elevation-5"
+        className="absolute right-0 bg-[#e97818] px-4 py-2.5 rounded-l-xl items-center justify-center shadow-sm"
         style={{ 
-           bottom: insets.bottom > 0 ? insets.bottom : 0,
-           shadowColor: '#e96b1f', 
-           shadowOffset: { width: 0, height: -2 }, 
-           shadowOpacity: 0.2, 
-           shadowRadius: 4,
+           bottom: (insets.bottom > 0 ? insets.bottom : 0) + 12,
+           elevation: 3,
            zIndex: 10
         }}
       >
-        <Text className="text-white text-[11px] font-bold tracking-wider">UMANG</Text>
+        <Text className="text-white text-[13px] font-bold tracking-wide">UMANG</Text>
       </TouchableOpacity>
 
     </View>
