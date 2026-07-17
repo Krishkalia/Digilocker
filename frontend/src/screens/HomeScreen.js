@@ -221,7 +221,7 @@ export default function HomeScreen({ navigation }) {
               </View>
               <View className="w-[40%] items-center justify-end h-full">
                 <Image 
-                  source={require('../../assets/umang_illustration.png')}
+                  source={require('../../assets/umang_banner.png')}
                   className="w-[80px] h-[100px]"
                   style={{ width: 80, height: 100 }}
                   resizeMode="contain"
