@@ -219,11 +219,11 @@ export default function HomeScreen({ navigation }) {
                   <Text className="text-white text-[12px] font-bold">Access UMANG</Text>
                 </TouchableOpacity>
               </View>
-              <View className="w-[40%] items-center justify-end h-full">
+              <View className="w-[40%] items-center justify-end h-full overflow-visible">
                 <Image 
                   source={require('../../assets/umang_banner.png')}
-                  className="w-[80px] h-[100px]"
-                  style={{ width: 80, height: 100 }}
+                  className="w-[120px] h-[140px]"
+                  style={{ width: 120, height: 140, position: 'absolute', right: 0, bottom: -10 }}
                   resizeMode="contain"
                 />
               </View>
