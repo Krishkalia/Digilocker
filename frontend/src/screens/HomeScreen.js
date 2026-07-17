@@ -48,8 +48,8 @@ export default function HomeScreen({ navigation }) {
       title: 'Aadhaar Card',
       subtitle: 'XXXX-XXXX-XXXX',
       authority: 'Unique Identification Authority of India (UIDAI)',
-      logoUrl: 'https://upload.wikimedia.org/wikipedia/en/thumb/c/cf/Aadhaar_Logo.svg/1200px-Aadhaar_Logo.svg.png',
-      bgLogoUrl: 'https://upload.wikimedia.org/wikipedia/en/thumb/c/cf/Aadhaar_Logo.svg/1200px-Aadhaar_Logo.svg.png',
+      logoUrl: require('../../assets/aadhaar-logo.png'),
+      bgLogoUrl: require('../../assets/aadhaar-logo.png'),
       buttonText: null
     },
     {
@@ -57,8 +57,8 @@ export default function HomeScreen({ navigation }) {
       title: 'Class X Marksheet',
       subtitle: 'Central Board of Secondary Education',
       authority: '',
-      logoUrl: 'https://upload.wikimedia.org/wikipedia/en/thumb/9/95/CBSE_new_logo.svg/1200px-CBSE_new_logo.svg.png',
-      bgLogoUrl: 'https://upload.wikimedia.org/wikipedia/en/thumb/9/95/CBSE_new_logo.svg/1200px-CBSE_new_logo.svg.png',
+      logoUrl: require('../../assets/cbse-logo.png'),
+      bgLogoUrl: require('../../assets/cbse-logo.png'),
       buttonText: null
     },
     {
@@ -66,8 +66,8 @@ export default function HomeScreen({ navigation }) {
       title: 'Class XII Marksheet',
       subtitle: 'Central Board of Secondary Education',
       authority: '',
-      logoUrl: 'https://upload.wikimedia.org/wikipedia/en/thumb/9/95/CBSE_new_logo.svg/1200px-CBSE_new_logo.svg.png',
-      bgLogoUrl: 'https://upload.wikimedia.org/wikipedia/en/thumb/9/95/CBSE_new_logo.svg/1200px-CBSE_new_logo.svg.png',
+      logoUrl: require('../../assets/cbse-logo.png'),
+      bgLogoUrl: require('../../assets/cbse-logo.png'),
       buttonText: null
     },
     {
@@ -75,8 +75,8 @@ export default function HomeScreen({ navigation }) {
       title: 'PAN Verification Record',
       subtitle: 'ABCDE1234F',
       authority: 'Income Tax Department',
-      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Income_Tax_Department_of_India_Logo.png/800px-Income_Tax_Department_of_India_Logo.png',
-      bgLogoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Income_Tax_Department_of_India_Logo.png/800px-Income_Tax_Department_of_India_Logo.png',
+      logoUrl: require('../../assets/incometax-logo.png'),
+      bgLogoUrl: require('../../assets/incometax-logo.png'),
       buttonText: 'Get Now'
     },
     {
