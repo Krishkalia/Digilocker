@@ -67,7 +67,7 @@ export default function SecureViewerScreen({ route, navigation }) {
                   startInLoadingState={true}
                   renderLoading={() => (
                     <View className="absolute inset-0 justify-center items-center bg-black">
-                      <ActivityIndicator size="large" color="#3838D9" />
+                      <ActivityIndicator size="large" color="#4a2bcf" />
                     </View>
                   )}
                 />
@@ -83,7 +83,7 @@ export default function SecureViewerScreen({ route, navigation }) {
                />
                {isLoading ? (
                  <View className="absolute inset-0 justify-center items-center">
-                   <ActivityIndicator size="large" color="#3838D9" />
+                   <ActivityIndicator size="large" color="#4a2bcf" />
                  </View>
                ) : null}
              </View>

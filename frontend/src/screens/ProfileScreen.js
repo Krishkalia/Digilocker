@@ -70,7 +70,7 @@ export default function ProfileScreen({ navigation }) {
       <ScrollView className="flex-1" showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 50 }}>
         
         {/* Blue Header Section */}
-        <View className="bg-[#3838D9] pt-12 pb-6 px-5 z-10 relative">
+        <View className="bg-[#4a2bcf] pt-12 pb-6 px-5 z-10 relative">
           <View className="flex-row justify-between items-center z-10">
             <View className="flex-row items-center">
               <TouchableOpacity onPress={() => navigation.goBack()} className="mr-4">
@@ -93,7 +93,7 @@ export default function ProfileScreen({ navigation }) {
           borderLeftWidth: screenWidth,
           borderTopWidth: 50,
           borderLeftColor: 'transparent',
-          borderTopColor: '#3838D9',
+          borderTopColor: '#4a2bcf',
           zIndex: 1
         }} />
 
@@ -118,7 +118,7 @@ export default function ProfileScreen({ navigation }) {
               ) : null}
             </TouchableOpacity>
             {/* Edit Icon Badge */}
-            <View className="absolute bottom-1 right-1 bg-[#3838D9] w-8 h-8 rounded-full border-2 border-white justify-center items-center shadow-sm pointer-events-none">
+            <View className="absolute bottom-1 right-1 bg-[#4a2bcf] w-8 h-8 rounded-full border-2 border-white justify-center items-center shadow-sm pointer-events-none">
               <FontAwesome5 name="camera" size={12} color="white" />
             </View>
           </View>

@@ -105,7 +105,7 @@ export default function HomeScreen({ navigation }) {
       <ScrollView className="flex-1" style={{ flex: 1 }} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 100 }}>
         
         {/* Blue Header Section */}
-        <View className="bg-[#3838D9] pt-8 pb-10 px-5 relative z-10">
+        <View className="bg-[#4a2bcf] pt-8 pb-10 px-5 relative z-10">
           
           {/* Top Bar: Logos */}
           <View className="flex-row items-center mb-6">
@@ -120,7 +120,7 @@ export default function HomeScreen({ navigation }) {
               <View className="relative justify-center items-center h-8 w-6 mr-1 mt-1">
                 <FontAwesome5 name="file" size={28} color="white" solid />
                 <View className="absolute top-[10px] items-center justify-center">
-                  <FontAwesome5 name="cloud" size={16} color="#3838D9" solid />
+                  <FontAwesome5 name="cloud" size={16} color="#4a2bcf" solid />
                   {/* Small Keyhole inside Cloud */}
                   <View className="absolute w-[2px] h-[6px] bg-white rounded-full mt-0.5" />
                 </View>
@@ -170,7 +170,7 @@ export default function HomeScreen({ navigation }) {
           borderLeftWidth: screenWidth,
           borderTopWidth: 40,
           borderLeftColor: 'transparent',
-          borderTopColor: '#3838D9',
+          borderTopColor: '#4a2bcf',
           zIndex: 10
         }} />
 
@@ -249,11 +249,11 @@ export default function HomeScreen({ navigation }) {
               </View>
 
               <View className="w-[55%] z-10">
-                <Text className="text-[#3838D9] font-bold text-[15px] mb-1">Your Credentials Wallet</Text>
+                <Text className="text-[#4a2bcf] font-bold text-[15px] mb-1">Your Credentials Wallet</Text>
                 <Text className="text-gray-600 text-[11px] leading-snug mb-3">
                   All Your Identity cards in one place
                 </Text>
-                <TouchableOpacity className="bg-[#3838D9] py-2 px-4 rounded-full self-start">
+                <TouchableOpacity className="bg-[#4a2bcf] py-2 px-4 rounded-full self-start">
                   <Text className="text-white text-[12px] font-bold">View All Credentials</Text>
                 </TouchableOpacity>
               </View>
@@ -278,7 +278,7 @@ export default function HomeScreen({ navigation }) {
           
           {/* Scroll Indicators (Simulated) */}
           <View className="flex-row justify-center mt-3 space-x-2">
-            <View className="h-1.5 w-1.5 rounded-full bg-[#3838D9]" />
+            <View className="h-1.5 w-1.5 rounded-full bg-[#4a2bcf]" />
             <View className="h-1.5 w-1.5 rounded-full bg-gray-300" />
           </View>
         </View>

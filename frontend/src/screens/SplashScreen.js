@@ -30,14 +30,14 @@ export default function SplashScreen() {
   });
 
   return (
-    <View className="flex-1 bg-[#3838D9] justify-center items-center">
+    <View className="flex-1 bg-[#4a2bcf] justify-center items-center">
       
       <View className="items-center">
         {/* Composite Logo */}
         <View className="relative justify-center items-center h-16 w-12 mb-4">
           <FontAwesome5 name="file" size={60} color="white" solid />
           <View className="absolute top-[22px] items-center justify-center">
-            <FontAwesome5 name="cloud" size={34} color="#3838D9" solid />
+            <FontAwesome5 name="cloud" size={34} color="#4a2bcf" solid />
             <View className="absolute w-[3px] h-[10px] bg-white rounded-full mt-1" />
           </View>
         </View>

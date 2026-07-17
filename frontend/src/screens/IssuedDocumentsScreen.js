@@ -39,7 +39,7 @@ export default function IssuedDocumentsScreen({ navigation }) {
       <View className="flex-1 bg-white" style={{ flex: 1 }}>
         
         {/* Blue Header Section */}
-        <View className="bg-[#3838D9] pt-12 pb-6 px-5 relative z-10">
+        <View className="bg-[#4a2bcf] pt-12 pb-6 px-5 relative z-10">
           {/* Faint Background Logo (simulated by a large faint icon) */}
           <View className="absolute right-0 bottom-10 opacity-[0.03]">
             <FontAwesome5 name="folder-open" size={200} color="white" />
@@ -60,7 +60,7 @@ export default function IssuedDocumentsScreen({ navigation }) {
                 <View className="relative justify-center items-center h-8 w-6 mr-1 mt-1">
                   <FontAwesome5 name="file" size={28} color="white" solid />
                   <View className="absolute top-[10px] items-center justify-center">
-                    <FontAwesome5 name="cloud" size={16} color="#3838D9" solid />
+                    <FontAwesome5 name="cloud" size={16} color="#4a2bcf" solid />
                     {/* Small Keyhole inside Cloud */}
                     <View className="absolute w-[2px] h-[6px] bg-white rounded-full mt-0.5" />
                   </View>
@@ -93,7 +93,7 @@ export default function IssuedDocumentsScreen({ navigation }) {
           borderLeftWidth: screenWidth,
           borderTopWidth: 50,
           borderLeftColor: 'transparent',
-          borderTopColor: '#3838D9',
+          borderTopColor: '#4a2bcf',
           zIndex: 10
         }} />
 
@@ -113,7 +113,7 @@ export default function IssuedDocumentsScreen({ navigation }) {
           
           <ScrollView className="flex-1" style={{ flex: 1 }} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 100 }}>
             {loading ? (
-              <ActivityIndicator size="large" color="#3838D9" className="mt-10" />
+              <ActivityIndicator size="large" color="#4a2bcf" className="mt-10" />
             ) : documents && documents.length > 0 ? (
               documents.map((userDoc) => {
                 const docName = userDoc?.document?.documentName ? userDoc.document.documentName : 'Aadhaar Card';

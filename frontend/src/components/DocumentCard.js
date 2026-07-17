@@ -57,7 +57,7 @@ export default function DocumentCard({
       {/* Optional Action Button */}
       {buttonText ? (
         <View className="mt-2">
-          <View className="bg-[#3838D9] rounded-full py-3 items-center justify-center">
+          <View className="bg-[#4a2bcf] rounded-full py-3 items-center justify-center">
             <Text className="text-white font-bold text-[14px]">{buttonText}</Text>
           </View>
         </View>

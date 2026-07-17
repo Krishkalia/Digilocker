@@ -55,7 +55,7 @@ export default function SearchScreen({ navigation }) {
     <SafeAreaView className="flex-1 bg-white">
       
       {/* Header & Search Bar */}
-      <View className="bg-[#3838D9] pt-12 pb-6 px-5 relative z-10 rounded-b-[30px]">
+      <View className="bg-[#4a2bcf] pt-12 pb-6 px-5 relative z-10 rounded-b-[30px]">
         <Text className="text-white text-[24px] font-bold mb-6">Search Documents</Text>
         
         <View className="bg-white flex-row items-center rounded-full px-5 py-3 shadow-sm border border-gray-100">
@@ -84,7 +84,7 @@ export default function SearchScreen({ navigation }) {
         
         <ScrollView className="flex-1" showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 100 }}>
           {loading ? (
-            <ActivityIndicator size="large" color="#3838D9" className="mt-10" />
+            <ActivityIndicator size="large" color="#4a2bcf" className="mt-10" />
           ) : filteredDocs && filteredDocs.length > 0 ? (
             filteredDocs.map((userDoc) => {
               const docName = userDoc?.document?.documentName ? userDoc.document.documentName : 'Aadhaar Card';

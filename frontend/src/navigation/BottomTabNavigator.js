@@ -62,22 +62,22 @@ function CustomTabBar({ state, descriptors, navigation }) {
             <View className="items-center justify-center h-7 mb-1">
               {route.name === 'Home' ? (
                 <View className="relative justify-center items-center">
-                  <FontAwesome5 name="file" size={22} color={isFocused ? '#3a00e5' : '#6b7280'} solid />
+                  <FontAwesome5 name="file" size={22} color={isFocused ? '#4a2bcf' : '#6b7280'} solid />
                   <View className="absolute top-[8px] items-center justify-center">
                     <FontAwesome5 name="cloud" size={12} color="white" solid />
-                    <View className="absolute w-[2px] h-[5px] rounded-full mt-0.5" style={{ backgroundColor: isFocused ? '#3a00e5' : '#6b7280' }} />
+                    <View className="absolute w-[2px] h-[5px] rounded-full mt-0.5" style={{ backgroundColor: isFocused ? '#4a2bcf' : '#6b7280' }} />
                   </View>
                 </View>
               ) : (
                 <IconComponent 
                   name={iconName} 
                   size={IconSize} 
-                  color={isFocused ? '#3a00e5' : '#6b7280'} 
+                  color={isFocused ? '#4a2bcf' : '#6b7280'} 
                 />
               )}
             </View>
             <Text 
-              className={`text-[11px] ${isFocused ? 'text-[#3a00e5] font-bold' : 'text-gray-500 font-medium'}`}
+              className={`text-[11px] ${isFocused ? 'text-[#4a2bcf] font-bold' : 'text-gray-500 font-medium'}`}
             >
               {route.name}
             </Text>

@@ -3,7 +3,7 @@ import { View, Text, ScrollView, SafeAreaView, TouchableOpacity, Image } from 'r
 import { FontAwesome5 } from '@expo/vector-icons';
 import { AuthContext } from '../context/AuthContext';
 
-const MenuItem = ({ icon, label, isLast, onPress, color = "#3838D9", textColor = "text-gray-700" }) => (
+const MenuItem = ({ icon, label, isLast, onPress, color = "#4a2bcf", textColor = "text-gray-700" }) => (
   <TouchableOpacity onPress={onPress} className={`flex-row items-center py-4 px-2 ${!isLast ? 'border-b border-gray-100' : ''}`}>
     <View className="w-8 items-center justify-center mr-3">
       <FontAwesome5 name={icon} size={18} color={color} />
