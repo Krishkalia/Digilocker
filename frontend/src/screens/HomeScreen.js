@@ -6,7 +6,7 @@ import DocumentCard from '../components/DocumentCard';
 import { AuthContext } from '../context/AuthContext';
 
 const UtilityItem = ({ imageSource, label }) => (
-  <TouchableOpacity className="w-[31%] bg-gray-50 rounded-xl items-center justify-center py-4 mb-3 border border-gray-100 shadow-sm" style={{ elevation: 1 }}>
+  <TouchableOpacity className="w-[31%] bg-[#F5F6F8] rounded-xl items-center justify-center py-4 mb-3" activeOpacity={0.7}>
     {imageSource ? (
       <Image source={imageSource} className="h-16 w-16 mb-2" resizeMode="contain" />
     ) : null}
