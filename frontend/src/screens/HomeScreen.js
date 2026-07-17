@@ -48,8 +48,8 @@ export default function HomeScreen({ navigation }) {
       title: 'Aadhaar Card',
       subtitle: 'XXXX-XXXX-XXXX',
       authority: 'Unique Identification Authority of India (UIDAI)',
-      logoUrl: 'https://cdn-icons-png.flaticon.com/512/3135/3135686.png',
-      bgLogoUrl: 'https://cdn-icons-png.flaticon.com/512/3135/3135686.png',
+      logoUrl: 'https://upload.wikimedia.org/wikipedia/en/thumb/c/cf/Aadhaar_Logo.svg/1200px-Aadhaar_Logo.svg.png',
+      bgLogoUrl: 'https://upload.wikimedia.org/wikipedia/en/thumb/c/cf/Aadhaar_Logo.svg/1200px-Aadhaar_Logo.svg.png',
       buttonText: null
     },
     {
@@ -57,8 +57,8 @@ export default function HomeScreen({ navigation }) {
       title: 'Class X Marksheet',
       subtitle: 'Central Board of Secondary Education',
       authority: '',
-      logoUrl: 'https://cdn-icons-png.flaticon.com/512/2231/2231557.png',
-      bgLogoUrl: 'https://cdn-icons-png.flaticon.com/512/2231/2231557.png',
+      logoUrl: 'https://upload.wikimedia.org/wikipedia/en/thumb/9/95/CBSE_new_logo.svg/1200px-CBSE_new_logo.svg.png',
+      bgLogoUrl: 'https://upload.wikimedia.org/wikipedia/en/thumb/9/95/CBSE_new_logo.svg/1200px-CBSE_new_logo.svg.png',
       buttonText: null
     },
     {
@@ -66,8 +66,8 @@ export default function HomeScreen({ navigation }) {
       title: 'Class XII Marksheet',
       subtitle: 'Central Board of Secondary Education',
       authority: '',
-      logoUrl: 'https://cdn-icons-png.flaticon.com/512/2231/2231557.png',
-      bgLogoUrl: 'https://cdn-icons-png.flaticon.com/512/2231/2231557.png',
+      logoUrl: 'https://upload.wikimedia.org/wikipedia/en/thumb/9/95/CBSE_new_logo.svg/1200px-CBSE_new_logo.svg.png',
+      bgLogoUrl: 'https://upload.wikimedia.org/wikipedia/en/thumb/9/95/CBSE_new_logo.svg/1200px-CBSE_new_logo.svg.png',
       buttonText: null
     },
     {
@@ -75,8 +75,8 @@ export default function HomeScreen({ navigation }) {
       title: 'PAN Verification Record',
       subtitle: 'ABCDE1234F',
       authority: 'Income Tax Department',
-      logoUrl: 'https://cdn-icons-png.flaticon.com/512/2965/2965403.png',
-      bgLogoUrl: 'https://cdn-icons-png.flaticon.com/512/2965/2965403.png',
+      logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Income_Tax_Department_of_India_Logo.png/800px-Income_Tax_Department_of_India_Logo.png',
+      bgLogoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Income_Tax_Department_of_India_Logo.png/800px-Income_Tax_Department_of_India_Logo.png',
       buttonText: 'Get Now'
     },
     {
