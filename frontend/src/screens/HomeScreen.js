@@ -48,8 +48,8 @@ export default function HomeScreen({ navigation }) {
       title: 'Aadhaar Card',
       subtitle: 'XXXX-XXXX-XXXX',
       authority: 'Unique Identification Authority of India (UIDAI)',
-      logoUrl: require('../../assets/aadhaar-logo.png'),
-      bgLogoUrl: require('../../assets/aadhaar-logo.png'),
+      logoUrl: require('../../assets/Aadhar.png'),
+      bgLogoUrl: require('../../assets/Aadhar.png'),
       buttonText: null
     },
     {
@@ -57,8 +57,8 @@ export default function HomeScreen({ navigation }) {
       title: 'Class X Marksheet',
       subtitle: 'Central Board of Secondary Education',
       authority: '',
-      logoUrl: require('../../assets/cbse-logo.png'),
-      bgLogoUrl: require('../../assets/cbse-logo.png'),
+      logoUrl: require('../../assets/cbse.png'),
+      bgLogoUrl: require('../../assets/cbse.png'),
       buttonText: null
     },
     {
@@ -66,8 +66,8 @@ export default function HomeScreen({ navigation }) {
       title: 'Class XII Marksheet',
       subtitle: 'Central Board of Secondary Education',
       authority: '',
-      logoUrl: require('../../assets/cbse-logo.png'),
-      bgLogoUrl: require('../../assets/cbse-logo.png'),
+      logoUrl: require('../../assets/cbse.png'),
+      bgLogoUrl: require('../../assets/cbse.png'),
       buttonText: null
     },
     {
@@ -75,8 +75,8 @@ export default function HomeScreen({ navigation }) {
       title: 'PAN Verification Record',
       subtitle: 'ABCDE1234F',
       authority: 'Income Tax Department',
-      logoUrl: require('../../assets/incometax-logo.png'),
-      bgLogoUrl: require('../../assets/incometax-logo.png'),
+      logoUrl: require('../../assets/incometax.jpg'),
+      bgLogoUrl: require('../../assets/incometax.jpg'),
       buttonText: 'Get Now'
     },
     {
