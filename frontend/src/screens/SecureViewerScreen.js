@@ -23,11 +23,14 @@ export default function SecureViewerScreen({ route, navigation }) {
   return (
     <SafeAreaView className="flex-1 bg-white">
       {/* Header */}
-      <View className="flex-row items-center justify-between px-4 py-3 bg-white z-50">
+      <View 
+        className="flex-row items-center justify-between px-4 pb-3 bg-white z-50"
+        style={{ paddingTop: Math.max(insets.top, 16) + 10 }}
+      >
         <TouchableOpacity onPress={() => navigation.goBack()} className="p-2 -ml-2">
           <FontAwesome5 name="arrow-left" size={20} color="#4a2bcf" />
         </TouchableOpacity>
-        <Text className="text-[#4a2bcf] font-bold text-[16px] flex-1 text-center" numberOfLines={1}>
+        <Text className="text-[#4a2bcf] font-bold text-[18px] flex-1 text-center" numberOfLines={1}>
           {document?.documentName || 'in.ac.ptu-DGMST-23016362023l'}
         </Text>
         <View className="p-2 -mr-2 bg-gray-100 rounded-full h-8 w-8 items-center justify-center">
