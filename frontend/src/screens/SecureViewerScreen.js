@@ -1,7 +1,6 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import { View, Text, SafeAreaView, TouchableOpacity, Dimensions, StyleSheet, ActivityIndicator, Image, Platform } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
-import * as ScreenCapture from 'expo-screen-capture';
 import { AuthContext } from '../context/AuthContext';
 
 import { WebView } from 'react-native-webview';
@@ -13,20 +12,6 @@ export default function SecureViewerScreen({ route, navigation }) {
   const { user } = useContext(AuthContext);
 
   const [isLoading, setIsLoading] = React.useState(true);
-
-  useEffect(() => {
-    // Block screenshots when this screen mounts (Mobile only)
-    if (Platform.OS !== 'web') {
-      ScreenCapture.preventScreenCaptureAsync().catch(console.warn);
-    }
-
-    return () => {
-      // Allow screenshots again when this screen unmounts (Mobile only)
-      if (Platform.OS !== 'web') {
-        ScreenCapture.allowScreenCaptureAsync().catch(console.warn);
-      }
-    };
-  }, []);
 
   // Determine file type from URL
   const fileUrl = document?.cloudStorageUrl || '';
@@ -78,18 +63,29 @@ export default function SecureViewerScreen({ route, navigation }) {
               )}
             </View>
           ) : isImage ? (
-             <View style={{ flex: 1, width: '100%', justifyContent: 'center' }}>
-               <Image 
-                 source={{ uri: fileUrl }}
-                 style={{ width: '100%', height: '100%' }}
-                 resizeMode="contain"
-                 onLoadEnd={() => setIsLoading(false)}
-               />
-               {isLoading ? (
-                 <View className="absolute inset-0 justify-center items-center bg-white">
-                   <ActivityIndicator size="large" color="#4a2bcf" />
-                 </View>
-               ) : null}
+             <View style={{ flex: 1, width: '100%', backgroundColor: 'white' }}>
+               {Platform.OS === 'web' ? (
+                 <img 
+                   src={fileUrl} 
+                   style={{ width: '100%', height: '100%', objectFit: 'contain' }} 
+                   onLoad={() => setIsLoading(false)} 
+                 />
+               ) : (
+                 <WebView 
+                   source={{ html: `<html><head><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0"></head><body style="margin:0;padding:0;background-color:white;"><img src="${fileUrl}" style="width:100%; height:auto; display:block;" /></body></html>` }}
+                   style={{ flex: 1, width: width, backgroundColor: 'white' }}
+                   onLoadEnd={() => setIsLoading(false)}
+                   javaScriptEnabled={true}
+                   domStorageEnabled={true}
+                   scalesPageToFit={true}
+                   startInLoadingState={true}
+                   renderLoading={() => (
+                     <View className="absolute inset-0 justify-center items-center bg-white">
+                       <ActivityIndicator size="large" color="#4a2bcf" />
+                     </View>
+                   )}
+                 />
+               )}
              </View>
           ) : (
              <View className="bg-gray-50 p-8 rounded-xl m-4 items-center border border-gray-200">
