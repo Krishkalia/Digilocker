@@ -42,14 +42,51 @@ export default function SecureViewerScreen({ route, navigation }) {
             <View style={{ flex: 1, width: '100%' }}>
               {Platform.OS === 'web' ? (
                 <iframe 
-                  src={`https://docs.google.com/gview?embedded=true&url=${encodeURIComponent(fileUrl)}`}
-                  style={{ flex: 1, width: '100%', border: 'none', height: '100vh' }}
+                  src={fileUrl}
+                  style={{ flex: 1, width: '100%', border: 'none', height: '100vh', backgroundColor: 'white' }}
                   onLoad={() => setIsLoading(false)}
                 />
               ) : (
                 <WebView 
-                  source={{ uri: `https://docs.google.com/gview?embedded=true&url=${encodeURIComponent(fileUrl)}` }}
-                  style={{ flex: 1, width: width }}
+                  source={{ html: `
+                    <!DOCTYPE html>
+                    <html>
+                    <head>
+                      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+                      <style>
+                        body { margin: 0; padding: 0; background-color: white; display: flex; flex-direction: column; align-items: center; }
+                        canvas { width: 100%; height: auto; }
+                      </style>
+                      <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+                    </head>
+                    <body>
+                      <div id="pdf-container" style="width: 100%;"></div>
+                      <script>
+                        var url = '${fileUrl}';
+                        var pdfjsLib = window['pdfjs-dist/build/pdf'];
+                        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+                        
+                        pdfjsLib.getDocument(url).promise.then(function(pdf) {
+                          var container = document.getElementById('pdf-container');
+                          for (var pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+                            pdf.getPage(pageNum).then(function(page) {
+                              var viewport = page.getViewport({scale: 2.5});
+                              var canvas = document.createElement('canvas');
+                              var context = canvas.getContext('2d');
+                              canvas.height = viewport.height;
+                              canvas.width = viewport.width;
+                              container.appendChild(canvas);
+                              page.render({ canvasContext: context, viewport: viewport });
+                            });
+                          }
+                        }).catch(function(err) {
+                           document.body.innerHTML = '<div style="padding:20px; text-align:center; font-family:sans-serif;">Error loading PDF.</div>';
+                        });
+                      </script>
+                    </body>
+                    </html>
+                  `}}
+                  style={{ flex: 1, width: width, backgroundColor: 'white' }}
                   onLoadEnd={() => setIsLoading(false)}
                   javaScriptEnabled={true}
                   domStorageEnabled={true}
