@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { View, Text, SafeAreaView, TouchableOpacity, Dimensions, StyleSheet, ActivityIndicator, Image, Platform } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { AuthContext } from '../context/AuthContext';
 
 import { WebView } from 'react-native-webview';
@@ -10,6 +11,7 @@ const { width, height } = Dimensions.get('window');
 export default function SecureViewerScreen({ route, navigation }) {
   const { document } = route.params || {};
   const { user } = useContext(AuthContext);
+  const insets = useSafeAreaInsets();
 
   const [isLoading, setIsLoading] = React.useState(true);
 
@@ -146,15 +148,18 @@ export default function SecureViewerScreen({ route, navigation }) {
 
         {/* FAB Download Button */}
         <TouchableOpacity 
-          className="absolute bottom-6 right-5 bg-[#4a2bcf] w-14 h-14 rounded-full justify-center items-center shadow-lg"
-          style={{ elevation: 5, zIndex: 50 }}
+          className="absolute right-5 bg-[#4a2bcf] w-14 h-14 rounded-full justify-center items-center shadow-lg"
+          style={{ bottom: 24, elevation: 5, zIndex: 50 }}
         >
           <FontAwesome5 name="arrow-down" size={22} color="white" />
         </TouchableOpacity>
       </View>
 
       {/* Bottom Action Bar */}
-      <View className="flex-row items-center justify-around bg-white border-t border-gray-200 pt-3 pb-5 z-50">
+      <View 
+        className="flex-row items-center justify-around bg-white border-t border-gray-200 pt-3 z-50"
+        style={{ paddingBottom: Math.max(insets.bottom, 20) }}
+      >
         <TouchableOpacity className="p-3">
           <FontAwesome5 name="home" size={24} color="#8c8c8c" solid />
         </TouchableOpacity>
