@@ -34,18 +34,22 @@ export default function SecureViewerScreen({ route, navigation }) {
   const isImage = fileUrl.match(/\.(jpeg|jpg|gif|png)$/i) != null;
 
   return (
-    <SafeAreaView className="flex-1 bg-black">
+    <SafeAreaView className="flex-1 bg-white">
       {/* Header */}
-      <View className="flex-row items-center justify-between px-4 py-3 bg-gray-900 border-b border-gray-800 z-50">
-        <TouchableOpacity onPress={() => navigation.goBack()} className="p-2">
-          <FontAwesome5 name="arrow-left" size={20} color="white" />
+      <View className="flex-row items-center justify-between px-4 py-3 bg-white z-50">
+        <TouchableOpacity onPress={() => navigation.goBack()} className="p-2 -ml-2">
+          <FontAwesome5 name="arrow-left" size={20} color="#4a2bcf" />
         </TouchableOpacity>
-        <Text className="text-white font-semibold text-lg">{document?.documentName || 'Secure Document'}</Text>
-        <View className="w-8" />
+        <Text className="text-[#4a2bcf] font-bold text-[16px] flex-1 text-center" numberOfLines={1}>
+          {document?.documentName || 'in.ac.ptu-DGMST-23016362023l'}
+        </Text>
+        <View className="p-2 -mr-2 bg-gray-100 rounded-full h-8 w-8 items-center justify-center">
+          <FontAwesome5 name="user" size={16} color="#6b7280" solid />
+        </View>
       </View>
 
       {/* Document Content Area */}
-      <View className="flex-1 justify-center items-center relative overflow-hidden bg-black">
+      <View className="flex-1 justify-center items-center relative overflow-hidden bg-white">
         
         {/* Render Actual Content */}
         {fileUrl ? (
@@ -66,7 +70,7 @@ export default function SecureViewerScreen({ route, navigation }) {
                   domStorageEnabled={true}
                   startInLoadingState={true}
                   renderLoading={() => (
-                    <View className="absolute inset-0 justify-center items-center bg-black">
+                    <View className="absolute inset-0 justify-center items-center bg-white">
                       <ActivityIndicator size="large" color="#4a2bcf" />
                     </View>
                   )}
@@ -82,20 +86,20 @@ export default function SecureViewerScreen({ route, navigation }) {
                  onLoadEnd={() => setIsLoading(false)}
                />
                {isLoading ? (
-                 <View className="absolute inset-0 justify-center items-center">
+                 <View className="absolute inset-0 justify-center items-center bg-white">
                    <ActivityIndicator size="large" color="#4a2bcf" />
                  </View>
                ) : null}
              </View>
           ) : (
-             <View className="bg-white p-8 rounded-xl shadow-lg m-4 items-center">
+             <View className="bg-gray-50 p-8 rounded-xl m-4 items-center border border-gray-200">
                <FontAwesome5 name="file-alt" size={60} color="#4a2bcf" className="mb-4" />
                <Text className="text-xl font-bold text-gray-800 text-center mb-2">Unsupported File</Text>
                <Text className="text-gray-500 text-center text-xs">This file type cannot be previewed natively.</Text>
              </View>
           )
         ) : (
-          <View className="bg-white p-8 rounded-xl shadow-lg m-4 items-center">
+          <View className="bg-gray-50 p-8 rounded-xl m-4 items-center border border-gray-200">
              <FontAwesome5 name="file-contract" size={60} color="#4a2bcf" className="mb-4" />
              <Text className="text-xl font-bold text-gray-800 text-center mb-2">{document?.documentName}</Text>
              <Text className="text-gray-500 text-center mb-2 font-mono text-xs">
@@ -107,29 +111,28 @@ export default function SecureViewerScreen({ route, navigation }) {
           </View>
         )}
 
-        {/* Dynamic Watermark Overlay */}
-        <View style={StyleSheet.absoluteFill} className="pointer-events-none justify-center items-center opacity-20 z-40">
-            {/* Generating multiple diagonal watermarks */}
-            {Array.from({ length: 25 }).map((_, i) => (
-               <Text 
-                 key={i} 
-                 style={{
-                   transform: [{ rotate: '-45deg' }],
-                   position: 'absolute',
-                   top: (Math.random() * height * 1.5) - height * 0.2,
-                   left: (Math.random() * width * 1.5) - width * 0.2,
-                   fontSize: 14,
-                   color: 'white',
-                   fontWeight: 'bold',
-                   width: 300,
-                   textAlign: 'center'
-                 }}
-               >
-                 {user?.email}{'\n'}{new Date().toISOString().split('T')[0]}
-               </Text>
-            ))}
-        </View>
+        {/* FAB Download Button */}
+        <TouchableOpacity 
+          className="absolute bottom-6 right-5 bg-[#4a2bcf] w-14 h-14 rounded-full justify-center items-center shadow-lg"
+          style={{ elevation: 5, zIndex: 50 }}
+        >
+          <FontAwesome5 name="arrow-down" size={22} color="white" />
+        </TouchableOpacity>
       </View>
+
+      {/* Bottom Action Bar */}
+      <View className="flex-row items-center justify-around bg-white border-t border-gray-200 pt-3 pb-5 z-50">
+        <TouchableOpacity className="p-3">
+          <FontAwesome5 name="home" size={24} color="#8c8c8c" solid />
+        </TouchableOpacity>
+        <TouchableOpacity className="p-3">
+          <FontAwesome5 name="share-alt" size={24} color="#8c8c8c" />
+        </TouchableOpacity>
+        <TouchableOpacity className="p-3">
+          <FontAwesome5 name="equals" size={24} color="#8c8c8c" />
+        </TouchableOpacity>
+      </View>
+
     </SafeAreaView>
   );
 }
